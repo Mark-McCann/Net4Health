@@ -15,6 +15,10 @@ rm(list = ls())
 
 
 
+
+
+
+
 # Mark McCann developed this script
 
 
@@ -26,6 +30,12 @@ rm(list = ls())
 
 #  Name roster for database manager
 #  Subject attendance for co-location of pupils
+
+
+# Loads raw pupil survey data and removes names 
+
+
+
 
 
 #########################
@@ -48,6 +58,14 @@ library(readxl)
 #  Main body of script  #
 #                       #
 #########################
+
+
+#########################
+#                       #
+# Timetable information #
+#                       #
+#########################
+
 setwd("Q:/Project Recipient Data/Net4Health S00317/Pilot/PersonalData/01_StudyMasterFile/Section01_School info files")
 
 s2.raw.df <- read_excel("REDACTED - Pupil Names, Sections & Teachers.xlsx", sheet = "S2 Pupils")
@@ -236,3 +254,123 @@ s4.pupil.subject.edgelist <- s4.pupil.subject.edgelist[which(!is.na(s4.pupil.sub
 
 save(s2.pupil.subject.edgelist, file = "T:/projects/Net19 S00371/Data/AnonymisedData/pilot_school_data/working data/TEMP_NO_PUPILID_s2_pupil_subject_edgelist.rdata")
 save(s4.pupil.subject.edgelist, file = "T:/projects/Net19 S00371/Data/AnonymisedData/pilot_school_data/working data/TEMP_NO_PUPILID_s4_pupil_subject_edgelist.rdata")
+
+
+#############################
+#                           #
+# Anonymise raw survey Data #
+#                           #
+#############################
+
+
+setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
+
+#load in the raw files 
+file1 <- read.csv("N4H extract 12-02-2020.csv")
+file2 <- read.csv("N4H extract 12-02-2020 2.csv")
+file3 <- read.csv("N4H extract 12-02-2020 3.csv")
+
+#####create a list of variables  with names                       
+drop        <-    c("respondent_first_name",
+                   "respondent_second_name",
+                   "q_net_friend_1_first_name",
+                   "q_net_friend_1_second_name",
+                   "q_net_friend_1_nickname",
+                   "q_net_friend_2_first_name",
+                   "q_net_friend_2_second_name",
+                   "q_net_friend_2_nickname",
+                   "q_net_friend_3_first_name",
+                   "q_net_friend_3_second_name",
+                   "q_net_friend_3_nickname",
+                   "q_net_friend_4_first_name",
+                   "q_net_friend_4_second_name",
+                   "q_net_friend_4_nickname",
+                   "q_net_friend_5_first_name",
+                   "q_net_friend_5_second_name",
+                   "q_net_friend_5_nickname",
+                   "q_net_friend_6_first_name",
+                   "q_net_friend_6_second_name",
+                   "q_net_friend_6_nickname",
+                   "q_net_friend_7_first_name",
+                   "q_net_friend_7_second_name",
+                   "q_net_friend_7_nickname",
+                   "q_net_friend_8_first_name",
+                   "q_net_friend_8_second_name",
+                   "q_net_friend_8_nickname",
+                   "q_net_friend_9_first_name",
+                   "q_net_friend_9_second_name",
+                   "q_net_friend_9_nickname",
+                   "q_net_friend_10_first_name",
+                   "q_net_friend_10_second_name",
+                   "q_net_friend_10_nickname",
+                   "q_net_friend_emotional_support_outward_1_first_name",
+                   "q_net_friend_emotional_support_outward_1_second_name",
+                   "q_net_friend_emotional_support_outward_1_nickname",
+                   "q_net_friend_emotional_support_outward_2_first_name",
+                   "q_net_friend_emotional_support_outward_2_second_name",
+                   "q_net_friend_emotional_support_outward_2_nickname",
+                   "q_net_friend_emotional_support_outward_3_first_name",
+                   "q_net_friend_emotional_support_outward_3_second_name",
+                   "q_net_friend_emotional_support_outward_3_nickname",
+                   "q_net_friend_emotional_support_inward_1_first_name",
+                   "q_net_friend_emotional_support_inward_1_second_name",
+                   "q_net_friend_emotional_support_inward_1_nickname",
+                   "q_net_friend_emotional_support_inward_2_first_name",
+                   "q_net_friend_emotional_support_inward_2_second_name",
+                   "q_net_friend_emotional_support_inward_2_nickname",
+                   "q_net_friend_emotional_support_inward_3_first_name",
+                   "q_net_friend_emotional_support_inward_3_second_name",
+                   "q_net_friend_emotional_support_inward_3_nickname",
+                   "q_net_friend_trust_1_first_name",
+                   "q_net_friend_trust_2_first_name",
+                   "q_net_friend_trust_3_first_name",
+                   "q_net_friend_best_grades_pals_ladder_1_first_name",
+                   "q_net_friend_best_grades_pals_ladder_2_first_name",
+                   "q_net_friend_best_grades_pals_ladder_3_first_name",
+                   "q_net_friend_respect_pals_ladder_1_first_name",
+                   "q_net_friend_respect_pals_ladder_2_first_name",
+                   "q_net_friend_respect_pals_ladder_3_first_name",
+                   "q_net_friend_people_you_dont_like_1_first_name",
+                   "q_net_friend_people_you_dont_like_1_second_name",
+                   "q_net_friend_people_you_dont_like_2_first_name",
+                   "q_net_friend_people_you_dont_like_2_second_name",
+                   "q_net_friend_people_you_dont_like_3_first_name",
+                   "q_net_friend_people_you_dont_like_3_second_name",
+                   "q_net_friend_pals_ladder_1_first_name",
+                   "q_net_friend_pals_ladder_2_first_name",
+                   "q_net_friend_pals_ladder_3_first_name",
+                   "q_other_gangs_person_2_first_name",
+                   "q_gangs_person_1_first_name",
+                   "q_gangs_person_1_second_name",
+                   "q_gangs_person_1_hidden_id",
+                   "q_gangs_person_2_first_name",
+                   "q_gangs_person_2_second_name",
+                   "q_gangs_person_2_hidden_id",
+                   "q_other_gangs",
+                   "q_other_gangs_text",
+                   "q_other_gangs_sporty",
+                   "q_other_gangs_popular",
+                   "q_other_gangs_powerfull",
+                   "q_other_gangs_doing_well",
+                   "q_other_gangs_stylish",
+                   "q_other_gangs_laugh",
+                   "q_other_gangs_trouble",
+                   "q_other_gangs_ordinary",
+                   "q_other_gangs_respected",
+                   "q_other_gangs_like",
+                   "q_other_gangs_person_1_first_name",
+                   "q_other_gangs_person_1_second_name",
+                   "q_other_gangs_person_1_hidden_id",
+                   "q_other_gangs_person_2_first_name",
+                   "q_other_gangs_person_2_second_name")
+
+
+#drop the name info variables from the data frame
+file1 <- file1[,!(names(file1) %in% drop)]
+file2 <- file2[,!(names(file2) %in% drop)]
+file3 <- file3[,!(names(file3) %in% drop)]
+
+##Save the files
+write.csv(file1, "N4H extract 12-02-2020 1 - Anonymised.csv")
+write.csv(file2, "N4H extract 12-02-2020 2 - Anonymised.csv")
+write.csv(file3, "N4H extract 12-02-2020 3 - Anonymised.csv")
