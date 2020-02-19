@@ -34,7 +34,8 @@ rm(list = ls())
 #                       #
 #########################
 
-setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
+
+setwd("Q:/Project Recipient Data/Net4Health S00317/Pilot/PersonalData/01_StudyMasterFile/Section02_RawData")
 
 #load in the raw files 
 file1 <- read.csv("N4H extract 12-02-2020.csv")
@@ -113,25 +114,10 @@ drop        <-    c("respondent_first_name",
                    "q_other_gangs_person_2_first_name",
                    "q_gangs_person_1_first_name",
                    "q_gangs_person_1_second_name",
-                   "q_gangs_person_1_hidden_id",
                    "q_gangs_person_2_first_name",
                    "q_gangs_person_2_second_name",
-                   "q_gangs_person_2_hidden_id",
-                   "q_other_gangs",
-                   "q_other_gangs_text",
-                   "q_other_gangs_sporty",
-                   "q_other_gangs_popular",
-                   "q_other_gangs_powerfull",
-                   "q_other_gangs_doing_well",
-                   "q_other_gangs_stylish",
-                   "q_other_gangs_laugh",
-                   "q_other_gangs_trouble",
-                   "q_other_gangs_ordinary",
-                   "q_other_gangs_respected",
-                   "q_other_gangs_like",
                    "q_other_gangs_person_1_first_name",
                    "q_other_gangs_person_1_second_name",
-                   "q_other_gangs_person_1_hidden_id",
                    "q_other_gangs_person_2_first_name",
                    "q_other_gangs_person_2_second_name")
 
@@ -140,6 +126,8 @@ drop        <-    c("respondent_first_name",
 file1 <- file1[,!(names(file1) %in% drop)]
 file2 <- file2[,!(names(file2) %in% drop)]
 file3 <- file3[,!(names(file3) %in% drop)]
+
+setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
 
 ##Save the files
 write.csv(file1, "N4H extract 12-02-2020 1 - Anonymised.csv")
