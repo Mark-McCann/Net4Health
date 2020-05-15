@@ -65,7 +65,11 @@ library(lme4)
 
 #setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/dummy_data")
 
+
+
 setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
+
+setwd("//130.209.141.254/projects/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
 test.df <- read.csv("N4H extract 12-02-2020 3 - Anonymised.csv", stringsAsFactors = FALSE)
 
 
@@ -426,9 +430,21 @@ drop <- c("q_net_friend_1_hang_out",
 
 file1 <- test.df[,!(names(test.df) %in% drop)]
 
-
+length( colnames(file1))
 
 colnames(file1[,1:100])
+colnames(file1[,100:200])
+colnames(file1[,200:300])
+colnames(file1[,300:400])
+colnames(file1[,400:500])
+colnames(file1[,500:600])
+colnames(file1[,600:700])
+colnames(file1[,700:800])
+colnames(file1[,800:900])
+colnames(file1[,900:1000])
+
+
+table(file1$q_net_friend_trust_1_hidden_id ,  useNA = "ifany")
 
 ################Emotional interactions questions 
 
@@ -650,7 +666,6 @@ plot(test.netY4)
 #              Emo net
 ####################################
 
-
 emo.edge.df <- file1[,
                  c("id",
                   "q_net_friend_emotional_support_outward_1_hidden_id",
@@ -660,7 +675,10 @@ emo.edge.df <- file1[,
 emo.edge.df <- emo.edge.df - 205
 
 emo.edge.el <- melt(emo.edge.df, id.vars = "id", variable.name = "friend.order")
+
 colnames(emo.edge.el) <- c("respondent_id","friend.order","to.id")
+
+emo.edge.el <- filter(emo.edge.el, emo.egde.el$to.id != -205)
 
 
 emo.person.df <- file1[,c("id", "q_net_friend_emotional_support_outward_1_person",

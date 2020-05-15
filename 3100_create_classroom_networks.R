@@ -54,9 +54,16 @@ library('Matrix')
 #                       #
 #########################
 
+setwd("//130.209.141.254/projects/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
+
+
 #Load the pupil by class edgelist
 load("T:/projects/Net19 S00371/Data/AnonymisedData/pilot_school_data/working data/TEMP_NO_PUPILID_s2_pupil_subject_edgelist.rdata")
 load("T:/projects/Net19 S00371/Data/AnonymisedData/pilot_school_data/working data/TEMP_NO_PUPILID_s4_pupil_subject_edgelist.rdata")
+
+load("//130.209.141.254/projects/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data/TEMP_NO_PUPILID_s2_pupil_subject_edgelist.rdata")
+load("//130.209.141.254/projects/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data/TEMP_NO_PUPILID_s4_pupil_subject_edgelist.rdata")
+
 
 ##shorten filename to make it easier to code up
 s2raw <- s2.pupil.subject.edgelist
