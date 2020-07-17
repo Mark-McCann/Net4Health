@@ -6,12 +6,18 @@ rm(list = ls())
 #               #
 #################
 
+## Claudia Zucca developed this script
+
+## Mark McCann modified - updated annontation & layout
+
 
 #############
 #  Purpose  #
 #############
 
-# prepare network data from coded data
+
+
+# prepare respondent attribute data from coded data
 
 #########################
 #                       #
@@ -19,7 +25,6 @@ rm(list = ls())
 #                       #
 #########################
 library(network)
-#install.packages("mi")
 library(mi)
 # library(dplyr)
 # library(reshape2)
@@ -37,34 +42,17 @@ library(mi)
 #                       #
 #########################
 
-
-#########################################################################
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
-#    +    +    +       Net4Health Dummy data   +    +    +    +    +    +
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
-#########################################################################
-
-
-# Mark: setwd("T:/projects/Net19 S00371/Data/AnonymisedData/dummy_data")
-
-#T:\projects\Net4Health S00371\Data\AnonymisedData\dummy_data\Test Extract 05012020.csv
-# Claudia
-# setwd("N:/")
-
-# test.df <- read.csv("Net4Health Test Extract 20012020.csv", stringsAsFactors = FALSE)
-
-#setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/dummy_data")
-
+# setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/dummy_data")
 
 # setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
-#setwd("/home/claudia/Desktop/Net4healthTaken")
+# setwd("/home/claudia/Desktop/Net4healthTaken")
 
 setwd("C:/Users/mmc78h/Documents/A Work/Net4Health/Data")
 
 test.df <- read.csv("N4H extract 12-02-2020 3 - Anonymised.csv", stringsAsFactors = FALSE)
 
 ###################################################################################
-# check missing
+#                   check missing
 ###################################################################################
 
 test.dfCheck <- apply(test.df, 2, function(x) ifelse(x == " " | x == "" | x == 0, NA, x))
@@ -72,8 +60,8 @@ test.dfCheck <- apply(test.df, 2, function(x) ifelse(x == " " | x == "" | x == 0
 summary(test.dfCheck)
 
 mdf <- missing_data.frame(test.dfCheck)
-windows()
-image(mdf)
+#windows()
+#image(mdf)
 
 missing <- list()
 
@@ -97,6 +85,7 @@ table(test.df$q_net_friend_1_music)
 
 # Print text variables in case they are going to kill themselves
 
+##########
 opentext <- paste(test.df$respondent_id,
                   test.df$q_6_other,
                   test.df$q_8_c_other,
@@ -219,9 +208,7 @@ opentext <- paste(test.df$respondent_id,
                   test.df$q_net_friend_8_same_clubs_other_text,
                   test.df$q_net_friend_9_same_clubs_other_text,
                   test.df$q_net_friend_10_same_clubs_other_text, sep = "-")
-
-
-
+##########
 
 summary(test.df)
 opentext[157:303]
@@ -233,7 +220,11 @@ length(table(test.df$q_net_friend_1_hidden_id, useNA = "ifany"))
 
 length(missing)
 
-# dataframe with open questions
+
+
+# create dataframe with open questions
+############################
+
 opentextcsv <- NULL
 opentextcsv <- as.data.frame(cbind(test.df$respondent_id,
                                    test.df$q_6_other,
@@ -357,9 +348,7 @@ opentextcsv <- as.data.frame(cbind(test.df$respondent_id,
                                    test.df$q_net_friend_9_same_clubs_other_text,
                                    test.df$q_net_friend_10_same_clubs_other_text))
 
-class(opentextcsv)
-opentextcsv[1,1]
-namescol[1]
+
 colnames(opentextcsv) 
 opentextcsv <- subset(test.df, select = c(respondent_id,
                                           q_6_other,
@@ -483,16 +472,14 @@ opentextcsv <- subset(test.df, select = c(respondent_id,
                                           q_net_friend_9_same_clubs_other_text,
                                           q_net_friend_10_same_clubs_other_text))
 
-
 write.csv(opentextcsv, "opentextDF.csv")
+############################
 
-length(unique(namescol))
-class(opentextcsv)
 #####################################################################################
 # recode missing to NA
 
 test.df <- as.data.frame(apply(test.df, 2, function(x) ifelse(x == " " | x == "" | x == 0, NA, x)))
-class(test.df)
+
 # Separate networks using var respondent_school
 
 # year two 
@@ -506,102 +493,26 @@ YearFour <- test.df[test.df$respondent_school == "24", ]
 YearTwo <- test.df[grepl("WHS2", test.df$respondent_id), ]
 YearFour <- test.df[grepl("WHS4", test.df$respondent_id), ]
 
-
-
-
-
-
-# select colums to make the network Year Two
-
-###Melt data into  edgelist based on edges only
-edge.dfY2 <- YearTwo[,c("id",
-                        "q_net_friend_1_hidden_id",
-                        "q_net_friend_2_hidden_id",
-                        "q_net_friend_3_hidden_id",
-                        "q_net_friend_4_hidden_id",
-                        "q_net_friend_5_hidden_id",
-                        "q_net_friend_6_hidden_id",
-                        "q_net_friend_7_hidden_id",
-                        "q_net_friend_8_hidden_id",
-                        "q_net_friend_9_hidden_id",
-                        "q_net_friend_10_hidden_id")]
-
-# make year two network
-
-edgeY2 <- data.frame()
-temp <- data.frame()
-for (i in 2:ncol(edge.dfY2)) {
-  temp <- cbind(edge.dfY2[, 1], edge.dfY2[, i])
-  edgeY2 <- rbind(edgeY2, temp)
-}
-colnames(edgeY2) <- c("respondent_id", "alter")
-edgeY2$alter <- as.character(edgeY2$alter)
-edgeY2$alter <- ifelse(edgeY2$alter == "" | edgeY2$alter == "0", NA, edgeY2$alter)
-
-edgecleanY2 <- edgeY2[which(!is.na(edgeY2$alter)),] 
-edgecleanY2$respondent_id <- as.numeric(edgecleanY2$respondent_id)
-edgecleanY2$alter <- as.numeric(edgecleanY2$alter)
-
-test.netY2 <-network(edgecleanY2,matrix.type='edgelist',ignore.eval=FALSE)
-
-plot(test.netY2)
-
-library(texreg)
-
-summary(test.netY2)
-test.netY2
-
-
-# select colums to make the network Year Two
-
-###Melt data into  edgelist based on edges only
-edge.dfY4 <- YearFour[,c("id",
-                         "q_net_friend_1_hidden_id",
-                         "q_net_friend_2_hidden_id",
-                         "q_net_friend_3_hidden_id",
-                         "q_net_friend_4_hidden_id",
-                         "q_net_friend_5_hidden_id",
-                         "q_net_friend_6_hidden_id",
-                         "q_net_friend_7_hidden_id",
-                         "q_net_friend_8_hidden_id",
-                         "q_net_friend_9_hidden_id",
-                         "q_net_friend_10_hidden_id")]
-
-# make year four network
-
-edgeY4 <- data.frame()
-temp <- data.frame()
-for (i in 2:ncol(edge.dfY4)) {
-  temp <- cbind(edge.dfY4[, 1], edge.dfY4[, i])
-  edgeY4 <- rbind(edgeY4, temp)
-}
-colnames(edgeY4) <- c("respondent_id", "alter")
-edgeY4$alter <- as.character(edgeY4$alter)
-table(edgeY4$alter, useNA = "ifany")
-edgeY4$alter <- ifelse(edgeY4$alter == "\\N" | edgeY4$alter == "0", NA, edgeY4$alter)
-
-edgecleanY4 <- edgeY4[which(!is.na(edgeY4$alter)),] 
-edgecleanY4$respondent_id <- as.numeric(edgecleanY4$respondent_id)
-edgecleanY4$alter <- as.numeric(edgecleanY4$alter)
-
-test.netY4 <-network(edgecleanY4,matrix.type='edgelist',ignore.eval=FALSE)
-
-plot(test.netY4)
-
-summary(test.netY4)
-test.netY4
-
-
-
 ############################################
 #               SCALES                     #
 ############################################
 
-##### !!!!!!!!!!!!! BEFORE RUNNING THE SCALES REMOVE NA ACCORDING TO A CRITERIA !!!!!!!!!!!!!!
+##### **** !!!!!!!!!!!!! BEFORE RUNNING THE SCALES REMOVE NA ACCORDING TO A CRITERIA !!!!!!!!!!!!!!
 
 
 # Year Two
 
+#Gender 
+boy  <- ifelse(YearTwo$q_6 == 0, NA, 
+        ifelse(YearTwo$q_6 == 1, 1, 
+        ifelse(YearTwo$q_6 == 2, 0,
+        ifelse(YearTwo$q_6 == 4, NA,
+        ifelse(YearTwo$q_6 == 5,NA, YearTwo$q_6)))))
+
+
+
+
+#################
 # GHQ items 42a-42k
 
 GHQY2 <- subset(YearTwo, select = c(q_42_a, q_42_b, q_42_c, q_42_d, q_42_e, 
@@ -609,8 +520,8 @@ GHQY2 <- subset(YearTwo, select = c(q_42_a, q_42_b, q_42_c, q_42_d, q_42_e,
 
 table(GHQY2$q_42_k, useNA = "ifany")
 
-mdf <- missing_data.frame(GHQY2)
-image(mdf)
+#mdf <- missing_data.frame(GHQY2)
+#image(mdf)
 
 
 # Likert summative scale ranging 0-33
@@ -656,8 +567,8 @@ selfEstY2dir <- subset(YearTwo, select = c(q_43_a, q_43_b, q_43_d, q_43_f, q_43_
 
 selfEstY2rev <- subset(YearTwo, select = c(q_43_c, q_43_e, q_43_h, q_43_i, q_43_j))
 
-mdf <- missing_data.frame(selfEstY2rev)
-image(mdf)
+#mdf <- missing_data.frame(selfEstY2rev)
+#image(mdf)
 
 table(YearTwo$q_43_j, useNA = "ifany")
 
@@ -691,8 +602,8 @@ YearTwo<- cbind(YearTwo, selfEstY2Scale)
 
 LonUCLAY2 <- subset(YearTwo, select = c(q_45_a, q_45_b, q_45_c))
 
-mdf <- missing_data.frame(LonUCLAY2)
-image(mdf)
+#mdf <- missing_data.frame(LonUCLAY2)
+#image(mdf)
 
 
 
@@ -722,8 +633,8 @@ YearTwo<- cbind(YearTwo, LonDIRY2Scale)
 
 StiAwY2 <- subset(YearTwo, select = c(q_51b_b, q_51b_d, q_51b_e, q_51b_h ))
 
-mdf <- missing_data.frame(StiAwY2)
-image(mdf)
+#mdf <- missing_data.frame(StiAwY2)
+#image(mdf)
 
 
 StiAwY2 <- as.data.frame(apply(StiAwY2, 2, function(x) ifelse(x == 1, 0, 
@@ -740,8 +651,8 @@ StiAwY2Scale <- rowSums(StiAwY2)
 
 StiAgrY2 <- subset(YearTwo, select = c(q_51b_m, q_51b_o, q_51b_p))
 
-mdf <- missing_data.frame(StiAgrY2)
-image(mdf)
+#mdf <- missing_data.frame(StiAgrY2)
+#image(mdf)
 
 StiAgrY2 <- as.data.frame(apply(StiAgrY2, 2, function(x) ifelse(x == 1, 0, 
                                                                 ifelse(x == 2, 1,
@@ -753,13 +664,12 @@ StiAgr2 <- as.data.frame(apply(StiAgrY2, 2, function(x) as.numeric(x)))
 
 StiAgrY2Scale <- rowSums(StiAgr2)
 
-
 # intelligence
 
 IntelY2 <- subset(YearTwo, select = c(q_51b_a, q_51b_g, q_51b_i, q_51b_m))
 
-mdf <- missing_data.frame(IntelY2)
-image(mdf)
+#mdf <- missing_data.frame(IntelY2)
+#image(mdf)
 
 IntelY2 <- as.data.frame(apply(IntelY2, 2, function(x) ifelse(x == 1, 0, 
                                                               ifelse(x == 2, 1,
@@ -776,8 +686,8 @@ IntelY2Scale <- rowSums(IntelY2)
 
 RecY2 <- subset(YearTwo, select = c(q_51b_f, q_51b_l))
 
-mdf <- missing_data.frame(RecY2)
-image(mdf)
+#mdf <- missing_data.frame(RecY2)
+#image(mdf)
 
 RecY2 <- as.data.frame(apply(RecY2, 2, function(x) ifelse(x == 1, 0, 
                                                           ifelse(x == 2, 1,
@@ -794,8 +704,8 @@ RecY2Scale <- rowSums(RecY2)
 
 friY2 <- subset(YearTwo, select = c(q_51b_c, q_51b_j))
 
-mdf <- missing_data.frame(friY2)
-image(mdf)
+#mdf <- missing_data.frame(friY2)
+#image(mdf)
 
 
 friY2 <- as.data.frame(apply(friY2, 2, function(x) ifelse(x == 1, 0, 
@@ -812,8 +722,8 @@ friY2Scale <- rowSums(friY2)
 DriY2 <- subset(YearTwo, select = c(q_68_c, q_68_f, q_68_l, q_68_o, q_68_q))
 table(DriY2$q_68_c)
 
-mdf <- missing_data.frame(DriY2)
-image(mdf)
+#mdf <- missing_data.frame(DriY2)
+#image(mdf)
 
 DriY2 <- as.data.frame(apply(DriY2, 2, function(x) ifelse(x == 1, 0, 
                                                           ifelse(x == 2, 1,
@@ -829,8 +739,8 @@ DriY2Scale <- rowSums(DriY2)
 # Drinking Coping
 CopY2 <- subset(YearTwo, select = c(q_68_a, q_68_d, q_68_e, q_68_g, q_68_p, q_68_r))
 
-mdf <- missing_data.frame(CopY2)
-image(mdf)
+#mdf <- missing_data.frame(CopY2)
+#image(mdf)
 
 CopY2 <- as.data.frame(apply(CopY2, 2, function(x) ifelse(x == 1, 0, 
                                                           ifelse(x == 2, 1,
@@ -861,31 +771,74 @@ EnhY2Scale <- rowSums(EnhY2)
 # Drinking -Conformity
 
 ConfY2 <- subset(YearTwo, select = c(q_68_b, q_68_i, q_68_m, q_68_t, q_68_u))
-
-
 ConfY2 <- as.data.frame(apply(ConfY2, 2, function(x) ifelse(x == 1, 0, 
-                                                            ifelse(x == 2, 1,
-                                                                   ifelse(x == 3, 2,
-                                                                          ifelse(x == 4, 3, 
-                                                                                 ifelse(x == 5, 4, x)))))))
-
+                                                     ifelse(x == 2, 1,
+                                                     ifelse(x == 3, 2,
+                                                     ifelse(x == 4, 3, 
+                                                     ifelse(x == 5, 4, x)))))))
 ConfY2 <- as.data.frame(apply(ConfY2, 2, function(x) as.numeric(x)))
-
 ConfY2Scale <- rowSums(ConfY2)
 
 # Offered Drugs
 
 table(YearTwo$q_69)
 YearTwo$q_69 <-  ifelse(YearTwo$q_69 == 1, "YES", 
-                        ifelse(YearTwo$q_69 == 2, "YES",
-                               ifelse(YearTwo$q_69 == 3, "NO", YearTwo$q_69)))
+                 ifelse(YearTwo$q_69 == 2, "YES",
+                 ifelse(YearTwo$q_69 == 3, "NO", YearTwo$q_69)))
 
 # Drug abuse Screaning test
 # NOT SURE ABOUT HOW TO RECODE IT
 
+colnames(YearTwo)[1437:1537]
 
+
+colnames(YearTwo)[1:40]
+
+recoded.Y2 <- select(YearTwo, c(respondent_id, q_6))
+
+recoded.Y2 <- cbind(recoded.Y2
+                    ,boy
+                    ,ConfY2Scale     
+                    ,CopY2Scale      
+                    ,DriY2Scale      
+                    ,EnhY2Scale      
+                    ,friY2Scale      
+                    ,GHQY2BinScale   
+                    ,GHQY2CaseScale 
+                    ,GHQY2LikScale   
+                    ,IntelY2Scale    
+                    ,LonDIRY2Scale
+                    ,LonUCLAY2Scale
+                    ,RecY2Scale
+                    ,selfEstY2Scale  
+                    ,StiAgrY2Scale   
+                    ,StiAwY2Scale)    
+
+#################
+
+
+
+
+
+######################################
+
+#####     Year 4 
+
+#################
 
 # Year Four
+
+
+# Gender
+boy  <- ifelse(YearFour$q_6 == 0, NA, 
+        ifelse(YearFour$q_6 == 1, 1, 
+        ifelse(YearFour$q_6 == 2, 0,
+        ifelse(YearFour$q_6 == 4, NA,
+        ifelse(YearFour$q_6 == 5,NA, YearFour$q_6)))))
+
+
+
+
 
 # GHQ items 42a-42k
 
@@ -893,8 +846,9 @@ GHQY4 <- subset(YearFour, select = c(q_42_a, q_42_b, q_42_c, q_42_d, q_42_e,
                                      q_42_f, q_42_g, q_42_h, q_42_i, q_42_j, q_42_k))
 
 
-mdf <- missing_data.frame(GHQY4)
-image(mdf)
+#mdf <- missing_data.frame(GHQY4)
+#image(mdf)
+
 
 
 
@@ -957,8 +911,8 @@ selfEstY4rec <- cbind(selfEstY4dirRec, selfEstY4revRec)
 
 selfEstY4rec <- as.data.frame(apply(selfEstY4rec, 2, function(x) as.numeric(x)))
 
-mdf <- missing_data.frame(selfEstY4rec)
-image(mdf)
+#mdf <- missing_data.frame(selfEstY4rec)
+#image(mdf)
 
 selfEstY4Scale <- rowSums(selfEstY4rec)
 
@@ -970,8 +924,8 @@ YearFour<- cbind(YearFour, selfEstY4Scale)
 
 LonUCLAY4 <- subset(YearFour, select = c(q_45_a, q_45_b, q_45_c))
 
-mdf <- missing_data.frame(LonUCLAY4)
-image(mdf)
+#mdf <- missing_data.frame(LonUCLAY4)
+#image(mdf)
 
 LonUCLAY4rec <- as.data.frame(apply(LonUCLAY4, 2, function(x) ifelse(x == 1, 0, 
                                                                      ifelse(x == 2, 1,
@@ -997,8 +951,8 @@ YearFour<- cbind(YearFour, LonDIRY4Scale)
 
 StiAwY4 <- subset(YearFour, select = c(q_51b_b, q_51b_d, q_51b_e, q_51b_l ))
 
-mdf <- missing_data.frame(StiAwY4)
-image(mdf)
+#mdf <- missing_data.frame(StiAwY4)
+#image(mdf)
 
 StiAwY4 <- as.data.frame(apply(StiAwY4, 2, function(x) ifelse(x == 1, 0, 
                                                               ifelse(x == 2, 1,
@@ -1075,8 +1029,8 @@ friY4Scale <- rowSums(friY4)
 
 DriY4 <- subset(YearFour, select = c(q_68_c, q_68_f, q_68_l, q_68_o, q_68_q))
 
-mdf <- missing_data.frame(DriY4)
-image(mdf)
+#mdf <- missing_data.frame(DriY4)
+#image(mdf)
 
 
 
@@ -1140,13 +1094,34 @@ ConfY4Scale <- rowSums(ConfY4)
 
 
 YearFour$q_69 <-  ifelse(YearFour$q_69 == 1, "YES", 
-                         ifelse(YearFour$q_69 == 2, "YES",
-                                ifelse(YearFour$q_69 == 3, "NO", YearFour$q_69)))
+                  ifelse(YearFour$q_69 == 2, "YES",
+                  ifelse(YearFour$q_69 == 3, "NO", YearFour$q_69)))
 
 
 
+recoded.Y4 <- select(YearFour, c(respondent_id, q_6))
+
+recoded.Y4 <- cbind(recoded.Y4
+                    ,boy
+                    ,ConfY4Scale     
+                    ,CopY4Scale      
+                    ,DriY4Scale      
+                    ,EnhY4Scale      
+                    ,friY4Scale      
+                    ,GHQY4BinScale   
+                    ,GHQY4CaseScale 
+                    ,GHQY4LikScale   
+                    ,IntelY4Scale    
+                    ,LonDIRY4Scale
+                    ,LonUCLAY4Scale
+                    ,RecY4Scale
+                    ,selfEstY4Scale  
+                    ,StiAgrY4Scale   
+                    ,StiAwY4Scale)    
+
+#################
 
 
-save(YearTwo, file = "Pilot Y2 Recoded Data.rdata")
-save(YearFour, file = "Pilot Y4 Recoded Data.rdata")
+save(recoded.Y2, file = "Pilot Y2 Recoded Data.rdata")
+save(recoded.Y4, file = "Pilot Y4 Recoded Data.rdata")
 

@@ -5,8 +5,8 @@ rm(list = ls())
 #               #
 #################
 
-# Chiara Broccatelli developed this script
-# Mark McCann modified 
+# Chiara Broccatelli developed this script for STASH
+# Mark McCann modified for Net4Health
 
 
 #############
@@ -37,67 +37,38 @@ library(network)
 #  Main body of script  #
 #                       #
 #########################
+detach(igraph)
 
-# - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ##
-#--------------------------------------------------------------------------------
-#             + + +         Preparing Control and Baseline nets and attributes         + + + 
-#--------------------------------------------------------------------------------
-# - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ##
-
-#===============================================================================
-#                       IMPORTING NETWORKS
-#===============================================================================
-
-load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/baseline_attributes.rdata")
-load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/control_attributes.rdata")
-
-#  +  control schools  +
-load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/control_edge_att_networks.rdata")
-#  +  baseline schools  +
-load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/baseline_edge_att_networks.rdata")
-
-# - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ##
-#-------------------------------------------------------------
-# + + + IMPORTING THE ATTRIBUTES 
-#-------------------------------------------------------------
-
-# ATTRIBUTES SCHOOLS
-#Control school
-
-summary(control.attributes)
-summary(baseline.attributes)
-
-# let's start with control schools
-c.gender <- list()
-c.know.var <- list()
-c.att.var <- list()
-c.conf.var <- list()
-c.scale.var <- list()
-c.info.var <- list()
-c.sex.var <- list()
-c.talk.var <- list()
-c.outschool.var <- list()
-c.schoolid.var <- list()
-
-load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/control_outschool_friends.rdata")
+load("Pilot Y2 Recoded Data.rdata")
+load("Pilot Y4 Recoded Data.rdata")
 
 
 
-for (i in 1:6){
-  
-  link.atts <- filter(control.attributes, respondent_school == i)
-  c.gender[[i]]    <- as.character(link.atts$gender[match(network.vertex.names(control.edge.att.network[[i]]), link.atts$id)])
-  c.sex.var[[i]]   <- as.numeric(link.atts$sex3.var[match(network.vertex.names(control.edge.att.network[[i]]), link.atts$id)])
-  c.scale.var[[i]] <- as.numeric(link.atts$scale.var[match(network.vertex.names(control.edge.att.network[[i]]), link.atts$id)])
-  c.talk.var[[i]]  <- as.numeric(link.atts$talk.var[match(network.vertex.names(control.edge.att.network[[i]]), link.atts$id)])
-  c.know.var[[i]]  <- as.numeric(link.atts$know.var[match(network.vertex.names(control.edge.att.network[[i]]), link.atts$id)])
-  c.conf.var[[i]]  <- as.numeric(link.atts$conf.var[match(network.vertex.names(control.edge.att.network[[i]]), link.atts$id)])
-  c.att.var[[i]]   <- as.numeric(link.atts$att.var[match(network.vertex.names(control.edge.att.network[[i]]), link.atts$id)])
-  c.schoolid.var[[i]] <- as.numeric(link.atts$respondent_school[match(network.vertex.names(control.edge.att.network[[i]]), link.atts$id)])
-  c.outschool.var[[i]] <- as.numeric(control.outside.school[[i]]$outschfriends[match(network.vertex.names(control.edge.att.network[[i]]), control.outside.school[[i]]$respondent_id)])
+set.vertex.attribute(friend.10names, 'StiAgre' , recoded.Y4$StiAgrY4Scale)
+set.vertex.attribute(friend.10names, 'boy' , recoded.Y4$boy)
 
-  }
 
+set.vertex.attribute(friend.10names, 'FindOut' , YearFour$q_37_e)
+set.vertex.attribute(friend.10names, 'Compete' , YearFour$q_37_g)
+set.vertex.attribute(friend.10names, 'ghq'     , GHQY4CaseScale)
+
+set.vertex.attribute(friend.10names, 'Loneliness'     , recoded.Y4$LonUCLAY4Scale)
+
+table(recoded.Y4$LonUCLAY4Scale, useNA = "always")
+
+
+net.igraph <- asIgraph(friend.10names)
+
+library(igraph)
+
+
+malecols <- c("green","blue")
+V(net.igraph)$color <- malecols[as.numeric(V(net.igraph)$male) + 1]
+
+
+V(net.igraph)$size <- V(net.igraph)$Loneliness 
+
+plot(net.igraph)
 
 
 #table(c.att.var[[1]], useNA = "ifany")

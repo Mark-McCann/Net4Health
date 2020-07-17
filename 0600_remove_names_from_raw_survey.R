@@ -37,6 +37,7 @@ rm(list = ls())
 
 setwd("Q:/Project Recipient Data/Net4Health S00317/Pilot/PersonalData/01_StudyMasterFile/Section02_RawData")
 
+
 #load in the raw files 
 file1 <- read.csv("N4H extract 12-02-2020.csv")
 file2 <- read.csv("N4H extract 12-02-2020 2.csv")
@@ -119,7 +120,8 @@ drop        <-    c("respondent_first_name",
                    "q_other_gangs_person_1_first_name",
                    "q_other_gangs_person_1_second_name",
                    "q_other_gangs_person_2_first_name",
-                   "q_other_gangs_person_2_second_name")
+                   "q_other_gangs_person_2_second_name",
+                   )
 
 
 #drop the name info variables from the data frame

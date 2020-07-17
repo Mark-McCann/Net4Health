@@ -66,12 +66,14 @@ library(lme4)
 #setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/dummy_data")
 
 
-
+###Unit drive
 setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
-
+###Remote access to unit drive
 setwd("//130.209.141.254/projects/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
-test.df <- read.csv("N4H extract 12-02-2020 3 - Anonymised.csv", stringsAsFactors = FALSE)
+###Home computer drive
+setwd("C:/Users/mmc78h/Documents/A Work/Net4Health/Data")
 
+test.df <- read.csv("N4H extract 12-02-2020 3 - Anonymised.csv", stringsAsFactors = FALSE)
 
 
 
@@ -430,25 +432,7 @@ drop <- c("q_net_friend_1_hang_out",
 
 file1 <- test.df[,!(names(test.df) %in% drop)]
 
-length( colnames(file1))
-
-colnames(file1[,1:100])
-colnames(file1[,100:200])
-colnames(file1[,200:300])
-colnames(file1[,300:400])
-colnames(file1[,400:500])
-colnames(file1[,500:600])
-colnames(file1[,600:700])
-colnames(file1[,700:800])
-colnames(file1[,800:900])
-colnames(file1[,900:1000])
-
-
-table(file1$q_net_friend_trust_1_hidden_id ,  useNA = "ifany")
-
 ################Emotional interactions questions 
-
-table(file1$q_net_friend_emotional_support_outward_1_hidden_id)
 
 #####Thisis wrong - this only shows within school friend IDs. 
 ## OUtside school friends will still appear in the answer to other Qs
@@ -602,8 +586,6 @@ table(file1$q_net_friend_1_changes_subject, file1$q_net_friend_emotional_support
 
 
 #####Reshape into a long file to look at overall alter action by alter characteristic
-colnames(file1)[1150:1170]
-dim(file1)
 
 YearTwo <- test.df[test.df$respondent_school == "22", ]
 YearFour <- file1[test.df$respondent_school == "24", ]
@@ -629,9 +611,7 @@ edge.dfY4 <- YearFour[,c("id",
                          "q_net_friend_9_hidden_id",
                          "q_net_friend_10_hidden_id")]
 
-head(edge.dfY4)
-str(edge.dfY4)
-
+#####Y4 IDs start counting at 206. Subtract 205 to have all ids start from 1, otherwise there will be 205 isolate IDs in networks
 edge.dfY4 <- edge.dfY4 - 205
 
 # make year four network
@@ -645,6 +625,7 @@ for (i in 2:ncol(edge.dfY4)) {
 colnames(edgeY4) <- c("respondent_id", "alter")
 edgeY4$alter <- as.character(edgeY4$alter)
 table(edgeY4$alter, useNA = "ifany")
+###Replace non-ID values with NA, otherwise keep the ID value
 edgeY4$alter <- ifelse(edgeY4$alter == "\\N" | edgeY4$alter == "0" |edgeY4$alter == -205 , NA, edgeY4$alter)
 
 edgecleanY4 <- edgeY4[which(!is.na(edgeY4$alter)),] 
@@ -653,11 +634,86 @@ edgecleanY4$alter <- as.numeric(edgecleanY4$alter)
 
 detach(package:igraph)
 test.netY4 <-network(edgecleanY4,matrix.type='edgelist',ignore.eval=FALSE)
-YearFour <- mutate(YearFour, male = q_6 == 1)
-set.vertex.attribute(test.netY4, 'male' , YearFour$male)
+
+
+male <- ifelse(YearFour$q_6 == 0, NA, 
+        ifelse(YearFour$q_6 == 1, 1, 
+        ifelse(YearFour$q_6 == 2, 0,
+        ifelse(YearFour$q_6 == 4, NA,
+        ifelse(YearFour$q_6 == 5,NA, YearFour$q_6)))))
+
+
+set.vertex.attribute(test.netY4, 'male' , male)
+
+YearFour$male <- male
+
+##################Add some test attributes
+
+#############GHQ Caseness
+GHQY4 <- subset(YearFour, select = c(q_42_a, q_42_b, q_42_c, q_42_d, q_42_e, 
+                                     q_42_f, q_42_g, q_42_h, q_42_i, q_42_j, q_42_k))
+
+GHQY4Bin <- as.data.frame(apply(GHQY4, 2, function(x) ifelse(x == 0, NA, 
+                                                             ifelse(x == 1, 0, 
+                                                             ifelse(x == 2, 0,
+                                                             ifelse(x == 3, 1,
+                                                             ifelse(x == 4,1, x)))))))
+GHQY4Bin <- as.data.frame(apply(GHQY4Bin, 2, function(x) as.numeric(x)))
+GHQY4BinScale <- rowSums(GHQY4Bin)
+# caseness
+GHQY4CaseScale <- ifelse(GHQY4BinScale >= 3, 1, 0)
+
+
+
+# Stigma Agreement
+StiAgrY4 <- subset(YearFour, select = c(q_51b_m, q_51b_o, q_51b_p))
+StiAgrY4 <- as.data.frame(apply(StiAgrY4, 2, function(x) ifelse(x == 0, NA,
+                                                                ifelse(x == 1, 0, 
+                                                                ifelse(x == 2, 1,
+                                                                       ifelse(x == 3, 2,
+                                                                              ifelse(x == 4, 3, 
+                                                                                     ifelse(x == 5, 4, x))))))))
+StiAgr4 <- as.data.frame(apply(StiAgrY4, 2, function(x) as.numeric(x)))
+StiAgrY4Scale <- rowSums(StiAgr4)
+
+set.vertex.attribute(test.netY4, 'StiAgre' , StiAgrY4Scale)
+set.vertex.attribute(test.netY4, 'FindOut' , YearFour$q_37_e)
+set.vertex.attribute(test.netY4, 'Compete' , YearFour$q_37_g)
+set.vertex.attribute(test.netY4, 'ghq'     , GHQY4CaseScale)
+
+
+######Descriptives
+
+table(YearFour$male, useNA = "always")
+table(YearFour$q_37_e, useNA = "always")
+table(YearFour$q_37_g, useNA = "always")
+table(GHQY4CaseScale, useNA = "always")
+
+
+table(male,GHQY4CaseScale, useNA = "always")
+table(male,YearFour$q_37_e, useNA = "always")
+
+
+library(psych)
+
+descdf <- subset(YearFour, select = c(male, q_37_e, q_37_g))
+descdf$ghq <- GHQY4CaseScale
+
+oneway.test(q_37_e ~ male , descdf)
+
+lm(q_37_e ~ male , YearFour)
+
+describeBy(descdf, male)
+
+
+find.tab <- table(descdf$male,descdf$q_37_e)
+
+round(prop.table(find.tab,1) ,2)
+round(prop.table(find.tab,2) ,2)
+
+
 
 library(network)
-
 
 
 plot(test.netY4)
@@ -672,21 +728,20 @@ emo.edge.df <- file1[,
   "q_net_friend_emotional_support_outward_2_hidden_id",
   "q_net_friend_emotional_support_outward_3_hidden_id")]
 
-emo.edge.df <- emo.edge.df - 205
-
 emo.edge.el <- melt(emo.edge.df, id.vars = "id", variable.name = "friend.order")
 
 colnames(emo.edge.el) <- c("respondent_id","friend.order","to.id")
 
-emo.edge.el <- filter(emo.edge.el, emo.egde.el$to.id != -205)
 
 
+
+####This version retains outwith school ties and holds info on the kind of person they contact
 emo.person.df <- file1[,c("id", "q_net_friend_emotional_support_outward_1_person",
                              "q_net_friend_emotional_support_outward_2_person",
                              "q_net_friend_emotional_support_outward_3_person")]
 
 emo.person.el <- melt(emo.person.df, id.vars = "id", variable.name = "friend.order")
-colnames(emo.person.el) <- c("respondent_id","friend.order","person")
+colnames(emo.person.el) <- c("respondent_id","friend.order.emoperson","person")
 
 
 ###########################
@@ -696,7 +751,7 @@ emo.support.df <- file1[,c("id", "q_net_friend_1_support",
                            "q_net_friend_2_support",
                            "q_net_friend_3_support")]
 emo.support.el <- melt(emo.support.df, id.vars = "id", variable.name = "friend.order")
-colnames(emo.support.el) <- c("respondent_id","friend.order","support")
+colnames(emo.support.el) <- c("respondent_id","friend.order.emosupp","support")
 
 ###########################
 #   Share own feelings    #
@@ -705,7 +760,7 @@ emo.emotions.df <- file1[,c("id", "q_net_friend_1_emotions",
                            "q_net_friend_2_emotions",
                            "q_net_friend_3_emotions")]
 emo.emotions.el <- melt(emo.emotions.df, id.vars = "id", variable.name = "friend.order")
-colnames(emo.emotions.el) <- c("respondent_id","friend.order","emotions")
+colnames(emo.emotions.el) <- c("respondent_id","friend.order.emoemotions","emotions")
 
 ###########################
 #          Jokes          #
@@ -714,7 +769,7 @@ emo.jokes.df <- file1[,c("id", "q_net_friend_1_makes_jokes",
                          "q_net_friend_2_makes_jokes",
                          "q_net_friend_3_makes_jokes")]
 emo.jokes.el <- melt(emo.jokes.df, id.vars = "id", variable.name = "friend.order")
-colnames(emo.jokes.el) <- c("respondent_id","friend.order","jokes")
+colnames(emo.jokes.el) <- c("respondent_id","friend.order.emojokes","jokes")
 
 
 ###########################
@@ -724,8 +779,7 @@ emo.subject.df <- file1[,c("id", "q_net_friend_1_changes_subject",
                          "q_net_friend_2_changes_subject",
                          "q_net_friend_3_changes_subject")]
 emo.subject.el <- melt(emo.subject.df, id.vars = "id", variable.name = "friend.order")
-colnames(emo.subject.el) <- c("respondent_id","friend.order","subject")
-
+colnames(emo.subject.el) <- c("respondent_id","friend.order.emosubject","subject")
 
 
 emo.att.el <- bind_cols(emo.edge.el    ,   
@@ -736,24 +790,42 @@ emo.att.el <- bind_cols(emo.edge.el    ,
                         emo.subject.el
 )
 
-dim(emo.att.el)
 colnames(emo.att.el)
+
+#Are all respondent IDs equivalent? 
+emo.att.el[,c(1)] == 
+  emo.att.el[,c(4)] ==
+  emo.att.el[,c(7)] ==
+  emo.att.el[,c(10)] ==
+  emo.att.el[,c(13)] ==
+  emo.att.el[,c(16)] 
+#Yes, retain the first ID only
+
+colnames(emo.att.el)[c(4,5,7,8,10,11,13,14,16,17)]
+
+emo.att.el <- emo.att.el[,-c(4,5,7,8,10,11,13,14,16,17)]
+
+colnames(emo.att.el)[c(1)] <- "respondent_id"
+
+head(emo.att.el)
 emo.att.el <- emo.att.el[,c("respondent_id","to.id","person","support",
                             "emotions","jokes","subject")]
 
-#emo.att.el <- emo.att.el[which(emo.att.el$to.id!=0),]
-
 
 emo.att.el$dismiss <- emo.att.el$jokes + emo.att.el$subject
-#emo.att.el$to.id[emo.att.el$to.id == -205] <- NA
+
+
+#####Y4 IDs start counting at 206. Subtract 205 to have all ids start from 1, otherwise there will be 205 isolate IDs in networks
+emo.att.el$respondent_id <- emo.att.el$respondent_id - 205
+emo.att.el$to.id <- emo.att.el$to.id - 205
 
 ##Retain outside school alters for MLM
 emo.att.mlm <- emo.att.el
 
-##Drop outside school alters
+
+##Remove non-IDs - these refer to outwith school ties, so need to be retained for full analysis
+
 emo.att.el <- filter(emo.att.el, emo.att.el$to.id != -205)
-
-
 
 
 #View(emo.att.el)
@@ -762,11 +834,10 @@ att.net <-network(emo.att.el,matrix.type='edgelist',ignore.eval=FALSE)
 
 set.vertex.attribute(att.net, 'male' , YearFour$male)
 
-
 ##Add characteristics for mlm
 colnames(emo.att.el)
 
-
+#switch back to non-ID dropped data so the variable align
 emo.att.el <- emo.att.mlm
 ####Add alter gender if in school year
 YearFour$to.id <- YearFour$id - 205
@@ -802,6 +873,18 @@ summary(test.netY4 ~ edges + mutual + triangles) / summary(test.netY4 ~ edges)
 summary(att.net ~ edges + mutual + triangles) / summary(att.net ~ edges)
 
 summary(test.netY4 ~ edges + mutual + triangles + nodematch('male', diff = T))
+summary(test.netY4 ~ edges + mutual + triangles + nodematch('ghq', diff =T))
+
+summary(test.netY4 ~ edges + mutual + gwesp(1.5, fixed = T) + gwidegree(1, cutoff = 12)
+          + nodematch('ghq', diff =T) + nodeifactor('ghq') + nodeofactor('ghq') )
+
+x <- ergm(test.netY4 ~ edges + mutual + gwesp(1.5, cutoff = 8) + gwidegree(1, cutoff = 12) 
+          + nodematch('ghq', diff =T) + nodeifactor('ghq') + nodeofactor('ghq')
+)
+
+
+summary(x)
+
 summary(att.net ~ edges + mutual + triangles + nodematch('male', diff = T)) 
 
 x <- mixingmatrix(test.netY4,'male')
@@ -826,7 +909,6 @@ x$From <- c("Girl", "Boy", "Girl", "Boy")
 x$To   <- c("Girl", "Girl", "Boy", "Boy")
 
 colnames(x) <- c("Sender","Recipient","Frequency")
-
 
 setwd("T:/projects/Net4Health S00371/DisseminationAndImpact/Pilot Study/A intermediate outputs")
 frnd.chart <- ggplot() + geom_bar(aes(y = Frequency, x = Sender, fill = Recipient),
@@ -932,7 +1014,19 @@ ggplot() + geom_bar(aes(y = Frequency, x = reorder(Sender, -Frequency, sum), fil
                                         labs(x = "Sender",
                                              title = "Within-school friendship and emotion support ties")
 
-                                      
+         
+
+
+
+######################################
+
+# ################Sunbelt 2020 plots
+
+
+
+
+
+                             
 
 
 library(igraph)
@@ -950,6 +1044,9 @@ plot(emo.igraph, vertex.label = "",vertex.size=1,
 )
 library(RColorBrewer)
 
+
+
+
 #Check for isolates in the friend net
 isolates <- which(degree(net.igraph, mode = 'all') == 0) 
 
@@ -957,7 +1054,112 @@ isolates <- which(degree(net.igraph, mode = 'all') == 0)
 net.igraph <- delete.vertices(net.igraph, isolates)
 emo.igraph <- delete.vertices(emo.igraph, isolates)
 
-V(net.igraph)
+
+
+
+
+malecols <- c("green","blue")
+V(net.igraph)$color <- malecols[as.numeric(V(net.igraph)$male) + 1]
+
+
+lay <- layout.kamada.kawai(net.igraph)
+
+plot(net.igraph, 
+     vertex.size=3, 
+     vertex.label="", 
+     edge.arrow.size = 0.2,
+     #     edge.arrow.width = 0.1,
+     arrow.mode = "-",
+     edge.color = "gray",
+     layout = lay, main = "Basic") 
+
+
+
+V(net.igraph)$size <- V(net.igraph)$FindOut * 1.5
+
+plot(net.igraph, 
+     vertex.label="", 
+     edge.arrow.size = 0.2,
+     #     edge.arrow.width = 0.1,
+     arrow.mode = "-",
+     edge.color = "gray",
+     layout = lay, main = "Find out") 
+
+V(net.igraph)$size <- ifelse( V(net.igraph)$FindOut > 3 ,6 , 2)
+V(net.igraph)$shape <- ifelse( V(net.igraph)$FindOut > 3 ,"sphere" , "circle")
+
+plot(net.igraph, 
+     vertex.label="", 
+     edge.arrow.size = 0.2,
+     #     edge.arrow.width = 0.1,
+     arrow.mode = "-",
+     edge.color = "gray",
+     layout = lay, main = "Find out") 
+
+table(V(net.igraph)$Compete)
+
+V(net.igraph)$size <- ifelse( V(net.igraph)$Compete > 4 ,6 , 2)
+V(net.igraph)$shape <- ifelse( V(net.igraph)$Compete > 4 ,"sphere" , "circle")
+
+
+plot(net.igraph, 
+     vertex.label="", 
+     edge.arrow.size = 0.2,
+     #     edge.arrow.width = 0.1,
+     arrow.mode = "-",
+     edge.color = "gray",
+     layout = lay, main = "Compete") 
+
+
+##############################
+
+x <- table(V(net.igraph)$ghq)
+prop.table(x)
+
+V(net.igraph)$size  <- ifelse( V(net.igraph)$ghq == 1 ,6 ,  2)
+V(net.igraph)$size  <- ifelse( is.na(V(net.igraph)$ghq) , 1 , V(net.igraph)$size) 
+
+V(net.igraph)$shape  <- ifelse( V(net.igraph)$ghq == 1 ,"sphere" , "circle")
+V(net.igraph)$shape  <- ifelse( is.na(V(net.igraph)$ghq) , "circle" , V(net.igraph)$shape) 
+
+
+plot(net.igraph, 
+     vertex.label="", 
+     edge.arrow.size = 0.2,
+     #     edge.arrow.width = 0.1,
+     arrow.mode = "-",
+     edge.color = "gray",
+     layout = lay, main = "Poor mental health") 
+
+
+V(net.igraph)$size <- V(net.igraph)$StiAgre 
+V(net.igraph)$size <- ifelse( V(net.igraph)$StiAgre > 0 & !is.na(V(net.igraph)$StiAgre) ,V(net.igraph)$StiAgre + 1 ,1)
+V(net.igraph)$shape <- ifelse( V(net.igraph)$size > 7 ,"sphere" , "circle")
+
+V(net.igraph)$size <- ifelse( V(net.igraph)$size > 7 , 5 ,2)
+
+table(V(net.igraph)$size)
+table(V(net.igraph)$male)
+
+
+plot(net.igraph, 
+     vertex.label="", 
+     edge.arrow.size = 0.2,
+     #     edge.arrow.width = 0.1,
+     arrow.mode = "-",
+     edge.color = "gray",
+     layout = lay, main = "Mental health stigma") 
+
+
+
+
+
+
+
+
+
+
+
 
 plot(net.igraph, 
      vertex.color="black", vertex.size=2,  vertex.label="", 
@@ -1156,7 +1358,7 @@ hist(emo.att.el$dismiss)
 hist(emo.att.el$support)
 hist(emo.att.el$emotions)
 
-
+colnames(emo.att.el)[1] <- "respondent_id"
 
 
 head(emo.att.el)
@@ -1231,7 +1433,7 @@ tidy(fit4,conf.int=TRUE  ,effect="fixed")
 ######################################
 ### Supportive interactions
 
-fit1 <- lmer(support ~ (1|respondent_id), data = emo.att.el, REML=FALSE) # fit a var. components model
+fit1 <- lmer(support ~ (1|respondent_id), data = emo.att.el, REML=T) # fit a var. components model
 summary(fit1)
 
 fit <- fit1
@@ -1322,6 +1524,11 @@ abline(h = 0, col = "red")
 fit1 <- lmer(emotions ~ (1|respondent_id) + ego.male + alter.male,
              data = emo.att.el, REML=FALSE) 
 summary(fit1)
+
+plot_model(fit1, sort.est = T, type = "std")
+
+plot_model(fit1)
+
 tidy(fit1,conf.int=TRUE  ,effect="fixed") 
 
 fit2 <- lmer(emotions ~ (1|respondent_id) + ego.male * alter.male,
@@ -1423,6 +1630,8 @@ dis.fit4.intercept.egomale <- lmer(dismiss ~
 dis.fit4.intercept.egomale <- lmer(dismiss ~  person + ego.male + (1|respondent_id),
                                    data = emo.att.el, REML=FALSE) 
 summary(dis.fit4.intercept.egomale)
+
+plot_model(dis.fit4.intercept.egomale, sort.est = T)
 tidy(dis.fit4.intercept.egomale,conf.int=TRUE  ,effect="fixed") 
 
 
@@ -1444,6 +1653,8 @@ joke.fit4.intercept.egomale <- lmer(jokes ~  person + ego.male + (1|respondent_i
                                    data = emo.att.el, REML=FALSE) 
 
 tidy(joke.fit4.intercept.egomale,conf.int=TRUE  ,effect="fixed") 
+summary(joke.fit4.intercept.egomale)
+plot_model(joke.fit4.intercept.egomale, sort.est = T)
 
 
 ##Boys more likely to report jokes 

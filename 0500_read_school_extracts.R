@@ -6,19 +6,6 @@ rm(list = ls())
 #               #
 #################
 
-
-#     Modification needed for the section below
-
-    ##    Create Pupil Class incidence matrices        ##
-
-#    This will need the anonymised ID added once created by the database manager
-
-
-
-
-
-
-
 # Mark McCann developed this script
 
 
@@ -31,11 +18,7 @@ rm(list = ls())
 #  Name roster for database manager
 #  Subject attendance for co-location of pupils
 
-
 # Loads raw pupil survey data and removes names 
-
-
-
 
 
 #########################
@@ -46,6 +29,7 @@ rm(list = ls())
 
 library(dplyr)
 library(readxl)
+library(reshape2)
 
 #########################
 #                       #
@@ -66,7 +50,13 @@ library(readxl)
 #                       #
 #########################
 
+
+
 setwd("Q:/Project Recipient Data/Net4Health S00317/Pilot/PersonalData/01_StudyMasterFile/Section01_School info files/Pupil spreadsheets")
+
+#remote access drive
+setwd("//130.209.141.254/Sensitive_Project_Data/Project Recipient Data/Net4Health S00317/Pilot/PersonalData/01_StudyMasterFile/Section01_School info files/Pupil spreadsheets")
+
 dir()
 s2.raw.df <- read_excel("REDACTED - Pupil Names, Sections & Teachers.xlsx", sheet = "S2 Pupils")
 s4.raw.df <- read_excel("REDACTED - Pupil Names, Sections & Teachers.xlsx", sheet = "S4 Pupils")
@@ -145,21 +135,23 @@ colnames(s4.raw.df) <- c(
 #################################
 
 setwd("Q:/Project Recipient Data/Net4Health S00317/Pilot/PersonalData/01_StudyMasterFile/Section12_IdAndNameLookup")
+#remote access drive
+setwd("//130.209.141.254/Sensitive_Project_Data/Project Recipient Data/Net4Health S00317/Pilot/PersonalData/01_StudyMasterFile/Section12_IdAndNameLookup")
+
 
 id.resp_id.lookup <- read.csv("Test Extract 05012020.csv")
 id.resp_id.lookup <- id.resp_id.lookup[,1:4]
 dim(id.resp_id.lookup)
-
 
 s2.id.resp_id.lookup <- id.resp_id.lookup[1:205,]
 s4.id.resp_id.lookup <- id.resp_id.lookup[206:404,]
 
 head(s2.id.resp_id.lookup)
 head(s4.id.resp_id.lookup)
-
+head(id.resp_id.lookup)
 ####Remove names
 
-id.resp_id.lookup <- id.resp_id.lookup[,1:2]
+id.resp_id.lookup    <- id.resp_id.lookup[,1:2]
 s2.id.resp_id.lookup <- s2.id.resp_id.lookup[,1:2]
 s4.id.resp_id.lookup <- s4.id.resp_id.lookup[,1:2]
 
@@ -173,6 +165,8 @@ save(s4.id.resp_id.lookup, file = "T:/projects/Net4Health S00371/Data/Anonymised
 ##      Save name rosters      ##
 #################################
 
+#################
+
 s2.names <- s2.raw.df[,1:2]
 
 ####Test the statement "There are no duplicate names in S2, True or False?"
@@ -183,25 +177,23 @@ print("There are no duplicate surnames in S2, True or False?")
 length(s2.names$Surname) == length(unique(s2.names$Surname))
 
 #Looks OK, save file
-
 write.csv(s2.names, file = "Q:/Project Recipient Data/Net4Health S00317/Pilot/PersonalData/01_StudyMasterFile/Section01_School info files/s2 pupil names.csv")
 
 
-#####Same for S4###########
+##################################
+####      Same for S4    #########
+##################################
 
 s4.names <- s4.raw.df[,1:2]
-
 ####Test the statement "There are no duplicate names in S2, True or False?"
 print("There are no duplicate first & last names in S4, True or False?")
 dim(s4.names)[1] == dim(unique(s4.names))[1]
-
 print("There are no duplicate surnames in s4, True or False?")
 length(s4.names$Surname) == length(unique(s4.names$Surname))
-
 #Looks OK, save file
 
 write.csv(s4.names, file = "Q:/Project Recipient Data/Net4Health S00317/Pilot/PersonalData/01_StudyMasterFile/Section01_School info files/s4 pupil names.csv")
-
+#################
 
 #####################################################
 ##                                                 ##
@@ -213,8 +205,23 @@ write.csv(s4.names, file = "Q:/Project Recipient Data/Net4Health S00317/Pilot/Pe
 
 ####Need to come back here and add in the pupil ID from the PHRF database manager
 
+#################
 colnames(s2.raw.df)
-s2.pupil.class.df <- select(s2.raw.df,
+
+###Link ID to name
+colnames(s2.id.resp_id.lookup)
+
+s2.id.resp_id.lookup$respondent_first_name[s2.id.resp_id.lookup$respondent_first_name == "DÃ³nal"] <- "Dónal"
+
+
+colnames(s2.raw.df)[1:2] <- c("respondent_second_name","respondent_first_name")
+
+
+s2.join.df <- full_join(s2.raw.df, s2.id.resp_id.lookup, by = c("respondent_second_name","respondent_first_name"))
+
+
+s2.pupil.class.df <- select(s2.join.df,
+                            "respondent_id",
                             "Subject 1 ID" ,
                             "Subject 2 ID" ,
                             "Subject 3 ID" ,      
@@ -232,28 +239,34 @@ s2.pupil.class.df <- select(s2.raw.df,
                             "Subject 15 ID",           
                             "Subject 16 ID",           
                             "Subject 17 ID" ) 
-#View(s2.pupil.class.df)       
 
-s2.pupil.subject.edgelist <- reshape(s2.pupil.class.df, 
-                                     varying =  1:17,
-                                     v.names = c("Subject"),
-                                     direction = "long")
 
-s2.pupil.subject.edgelist <- s2.pupil.subject.edgelist[c("id","Subject")]
+s2.pupil.subject.edgelist <- melt(s2.pupil.class.df, 
+                                     id.vars = c("respondent_id"), 
+                                     measure.vars = 2:18,
+                                     variable.name = "subjectnum")
+
+
+colnames(s2.pupil.subject.edgelist)[3] <- c("Subject")
+
+s2.pupil.subject.edgelist <- s2.pupil.subject.edgelist[,c("respondent_id","Subject")]
 
 ###Remove NAs
 s2.pupil.subject.edgelist <- s2.pupil.subject.edgelist[which(!is.na(s2.pupil.subject.edgelist$Subject)),]
-
+#################
 
 #############################
 #                           #
 #       Same for S4         #
 #                           #
 #############################
+#################
+colnames(s4.raw.df)[1:2] <- c("respondent_second_name","respondent_first_name")
 
+s4.join.df <- full_join(s4.raw.df, s4.id.resp_id.lookup, by = c("respondent_second_name","respondent_first_name"))
 
-colnames(s4.raw.df)
-s4.pupil.class.df <- select(s4.raw.df,
+s4.pupil.class.df <- select(s4.join.df,
+                            "respondent_id",
                             "Subject 1 ID" ,
                             "Subject 2 ID" ,
                             "Subject 3 ID" ,      
@@ -268,15 +281,25 @@ s4.pupil.class.df <- select(s4.raw.df,
                             "Subject 12 ID",          
                             "Subject 13 ID") 
 
-s4.pupil.subject.edgelist <- reshape(s4.pupil.class.df, 
-                                     varying =  1:13,
-                                     v.names = c("Subject"),
-                                     direction = "long")
-s4.pupil.subject.edgelist <- s4.pupil.subject.edgelist[c("id","Subject")]
+s4.pupil.subject.edgelist <- melt(s4.pupil.class.df, 
+                                  id.vars = c("respondent_id"), 
+                                  measure.vars = 2:14,
+                                  variable.name = "subjectnum")
+
+
+colnames(s4.pupil.subject.edgelist)[3] <- c("Subject")
+
+s4.pupil.subject.edgelist <- s4.pupil.subject.edgelist[,c("respondent_id","Subject")]
 
 ###Remove NAs
 s4.pupil.subject.edgelist <- s4.pupil.subject.edgelist[which(!is.na(s4.pupil.subject.edgelist$Subject)),]
 
+#################
 
 save(s2.pupil.subject.edgelist, file = "T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data/TEMP_NO_PUPILID_s2_pupil_subject_edgelist.rdata")
 save(s4.pupil.subject.edgelist, file = "T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data/TEMP_NO_PUPILID_s4_pupil_subject_edgelist.rdata")
+
+save(s2.pupil.subject.edgelist, file = "//130.209.141.254/projects/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data/s2_pupil_subject_edgelist.rdata")
+save(s4.pupil.subject.edgelist, file = "//130.209.141.254/projects/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data/s4_pupil_subject_edgelist.rdata")
+
+

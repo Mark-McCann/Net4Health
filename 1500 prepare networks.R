@@ -6,13 +6,13 @@ rm(list = ls())
 #               #
 #################
 
+# Mark McCann developed this script
 
 # Search for three asterisks to find things to be checked ***
 
-## All the edgelists contain a to = 1 column that appears often. check is this referring to NA
-## At the moment, the code assumes it's NA and deletes. 
-
 # The edge attributes haven't been added. 
+
+#   Still contains a lot of visualisations that should live somewhere else 
 
 #############
 #  Purpose  #
@@ -26,6 +26,7 @@ rm(list = ls())
 #                       #
 #########################
 library(network)
+library(dplyr)
 library(intergraph)
 
 #########################
@@ -44,6 +45,7 @@ get.plex <- function(file = NULL, edges = c("q_net_friend_1_hidden_id",
   # make network
   edge <- data.frame()
   temp <- data.frame()
+  
   for (i in 2:ncol(edge.df)) {
     temp <- cbind(edge.df[, 1], edge.df[, i])
     edge <- rbind(edge, temp)
@@ -56,6 +58,7 @@ get.plex <- function(file = NULL, edges = c("q_net_friend_1_hidden_id",
   edgeclean$alter <- as.numeric(edgeclean$alter)
   ####Removing 1s, not sure why the 1s appeared to begin with, check please ***
   edgeclean <- edgeclean[which(!edgeclean$alter == 1),] 
+  edgeclean <- edgeclean[which(!edgeclean$alter == 0),] 
   net <-network(edgeclean,matrix.type='edgelist',ignore.eval=FALSE)
 return(net)
 }
@@ -67,20 +70,13 @@ return(net)
 #                       #
 #########################
 
-
-#########################################################################
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
-#    +    +    +       Net4Health Dummy data   +    +    +    +    +    +
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
-#########################################################################
-
-
 #setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
 #setwd("/home/claudia/Desktop/Net4healthTaken")
 
 setwd("C:/Users/mmc78h/Documents/A Work/Net4Health/Data")
 
 test.df <- read.csv("N4H extract 12-02-2020 3 - Anonymised.csv", stringsAsFactors = FALSE)
+
 
 #####################################################################################
 # recode missing to NA
@@ -100,9 +96,7 @@ YearTwo <- test.df[grepl("WHS2", test.df$respondent_id), ]
 YearFour <- test.df[grepl("WHS4", test.df$respondent_id), ]
 
 
-
-
-
+#########
 
 
 friend.3names <- get.plex(YearFour)
@@ -156,7 +150,6 @@ all.gang   <- get.plex(YearFour, edges = c("q_gangs_person_1_hidden_id",
 dont.like <- get.plex(YearFour, edge = c("q_net_friend_people_you_dont_like_1_hidden_id",
                                          "q_net_friend_people_you_dont_like_2_hidden_id",
                                          "q_net_friend_people_you_dont_like_3_hidden_id") )
-
 
 
 
