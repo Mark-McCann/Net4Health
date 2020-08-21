@@ -1,23 +1,48 @@
-# - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ##
-#--------------------------------------------------------------------------------
-#   Linking imputed data to networks  
-#--------------------------------------------------------------------------------
-# - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ## - ++ - ##
 rm(list = ls())
 
-#===============================================================================
-#                       IMPORTING NETWORKS
-#===============================================================================
+#############
+#  Purpose  #
+#############
 
-load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/control.imputed.rdata")
-load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/baseline.imputed.rdata")
-#  +  control schools  +
-load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/control_edge_att_networks.rdata")
-#  +  baseline schools  +
-load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/baseline_edge_att_networks.rdata")
+# Linking imputed data to networks
+
+##############
+#            #
+#    Notes   #
+#            #
+##############
+ 
+
+#########################
+#                       #
+#  Outstanding actions  #
+#                       #
+#########################
+
+
+#########################
+#                       #
+#    Load packages      #
+#                       #
+#########################
+
 library(dplyr)
 library(sna)
 library(network)
+
+
+#########################
+#                       #
+#     Load functions    #
+#                       #
+#########################
+
+
+#########################
+#                       #
+#  Main body of script  #
+#                       #
+#########################
 
 
 ########Function to create an ergm-ready object 
@@ -35,12 +60,6 @@ create.ergm.imputation.data <- function(netfile = control.edge.att.network , imp
     link.atts <- filter(pre.att, school.id == j)
 # Link on node attributes, matching by ID
     netfile[[j]] %v% "gender" <- as.numeric(as.character(link.atts$gender[match(network.vertex.names(netfile[[j]]), link.atts$id)]))
-    netfile[[j]] %v% "sex.var" <- as.numeric(link.atts$sex.var[match(network.vertex.names(netfile[[j]]), link.atts$id)])
-    netfile[[j]] %v% "scale.var" <- as.numeric(as.character(link.atts$scale.var[match(network.vertex.names(netfile[[j]]), link.atts$id)]))
-    netfile[[j]] %v% "talk.var" <- as.numeric(as.character(link.atts$talk.var[match(network.vertex.names(netfile[[j]]), link.atts$id)]))
-    netfile[[j]] %v% "know.var" <- as.numeric(as.character(link.atts$know.var[match(network.vertex.names(netfile[[j]]), link.atts$id)]))
-    netfile[[j]] %v% "conf.var" <- as.numeric(as.character(link.atts$conf.var[match(network.vertex.names(netfile[[j]]), link.atts$id)]))
-    netfile[[j]] %v% "att.var" <- as.numeric(as.character(link.atts$att.var[match(network.vertex.names(netfile[[j]]), link.atts$id)]))
     netfile[[j]] %v% "school.id" <- as.numeric( as.character(link.atts$school.id[match(network.vertex.names(netfile[[j]]), link.atts$id)]))
     netfile[[j]] %v% "na_count" <- as.numeric(as.character(link.atts$na_count[match(network.vertex.names(netfile[[j]]), link.atts$id)]))
     ###Check isolates - i.e. didn't receive a nomination
@@ -84,7 +103,6 @@ create.ergm.imputation.data <- function(netfile = control.edge.att.network , imp
  return(netfile)
 }
 
-
 #####Save first imputation ERGM object
 ergm.data.control.imputed <- list()
 for (i in 1:length(control.imputed)) {
@@ -96,9 +114,6 @@ for (i in 1:length(baseline.imputed)) {
   ergm.data.baseline.imputed[[i]] <- create.ergm.imputation.data(netfile = baseline.edge.att.network, impfile = baseline.imputed[[i]])
 }
   
-save(ergm.data.control.imputed, file = "//192.168.0.17/stash_sna/Data/AnonymisedData/working data/ergm_data_control_imputed.rdata")
-save(ergm.data.baseline.imputed, file = "//192.168.0.17/stash_sna/Data/AnonymisedData/working data/ergm_data_baseline_imputed.rdata")
-
   
 
 

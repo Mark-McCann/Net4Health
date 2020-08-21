@@ -101,17 +101,17 @@ Table.csv</y:NodeLabel>
     <node id="n7">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
-          <y:Geometry height="206.4991860501509" width="656.4025168057051" x="2802.7764664861597" y="2694.2755546558783"/>
+          <y:Geometry height="108.99999999999955" width="656.4025168057051" x="2493.967165031095" y="4246.675419193604"/>
           <y:Fill color="#E8EEF7" color2="#99CC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="43.203125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="571.46875" x="42.466883402852545" xml:space="preserve" y="81.64803052507523">1000_raw_recoding and data extracts.R<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="43.203125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="571.46875" x="42.466883402852545" xml:space="preserve" y="32.8984375">1000_raw_recoding and data extracts.R<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
     <node id="n8">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
-          <y:Geometry height="109.0" width="444.8673348207749" x="2249.3771260283206" y="2710.9404286952613"/>
+          <y:Geometry height="109.0" width="444.8673348207749" x="1813.943515362753" y="4246.675419193604"/>
           <y:Fill color="#E8EEF7" color2="#99CC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="30" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="40.7529296875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="357.5546875" x="43.65632366038744" xml:space="preserve" y="34.12353515625">1500_prepare_networks.R<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
@@ -121,7 +121,7 @@ Table.csv</y:NodeLabel>
     <node id="n9">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
-          <y:Geometry height="109.0" width="416.59120351856836" x="1541.854855311162" y="2528.395063720359"/>
+          <y:Geometry height="109.0" width="416.59120351856836" x="1162.1959969966172" y="4246.675419193604"/>
           <y:Fill color="#E8EEF7" color2="#99CC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="30" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="40.7529296875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="360.9091796875" x="27.84101191553418" xml:space="preserve" y="34.12353515625">2000_prepare_attributes.R<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
@@ -131,17 +131,17 @@ Table.csv</y:NodeLabel>
     <node id="n10">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.dataBase">
-          <y:Geometry height="232.6017395556862" width="513.4684448242188" x="1569.8801235472258" y="2747.545427373633"/>
+          <y:Geometry height="136.23109830033604" width="509.30106574290653" x="1115.8410658844482" y="4504.672431566698"/>
           <y:Fill color="#C0C0C0" color2="#008000" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="34" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="45.6533203125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="467.05078125" x="70.88804452078693" xml:space="preserve" y="119.40619987325636">Pilot Y2/4 REcoded Data.rdata<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.09285714285714286" nodeRatioY="0.20962289663461542" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="34" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="45.6533203125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="463.2822265625" x="23.009419590203265" xml:space="preserve" y="45.28888899391768">Pilot Y2/4 Recoded Data.rdata</y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
     <node id="n11">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.internalStorage">
-          <y:Geometry height="923.6188148550066" width="1589.181245529122" x="231.24760952356564" y="649.2719227210515"/>
+          <y:Geometry height="923.6188148550066" width="1589.181245529122" x="1580.7622218397987" y="912.2267753570047"/>
           <y:Fill color="#333300" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="30" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="114.2587890625" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="1513.169921875" x="38.005661827060976" xml:space="preserve" y="4.0">Q:\Project Recipient Data\Net4Health S00317\Pilot\PersonalData\01_StudyMasterFile\Section01_School info files
@@ -153,7 +153,7 @@ RAW DATA FROM THE SCHOOL RECORDS</y:NodeLabel>
     <node id="n12">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.storedData">
-          <y:Geometry height="146.39440892968832" width="734.6869634764375" x="1063.143340615689" y="1075.8061437230167"/>
+          <y:Geometry height="146.39440892968832" width="734.6869634764375" x="2412.6579529319224" y="1338.7609963589698"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="24" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="577.55078125" x="32.482119033215895" xml:space="preserve" y="56.49603258984416">REDACTED - Pupil names,sections and teachers.xlsx<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="-0.06272871899336624" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
@@ -163,7 +163,7 @@ RAW DATA FROM THE SCHOOL RECORDS</y:NodeLabel>
     <node id="n13">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
-          <y:Geometry height="179.78040904198042" width="466.15114788131496" x="1197.4112484132504" y="1310.7448535680044"/>
+          <y:Geometry height="179.78040904198042" width="466.15114788131496" x="2546.9258607294832" y="1573.6997062039577"/>
           <y:Fill color="#E8EEF7" color2="#99CC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="43.203125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="397.15625" x="34.49744894065748" xml:space="preserve" y="68.28864202099021">0500_read_school_extracts<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
@@ -173,7 +173,7 @@ RAW DATA FROM THE SCHOOL RECORDS</y:NodeLabel>
     <node id="n14">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.storedData">
-          <y:Geometry height="156.0" width="466.15114788131496" x="356.38133321535656" y="1322.6350580889946"/>
+          <y:Geometry height="156.0" width="466.15114788131496" x="1705.8959455315896" y="1585.589910724948"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="24" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="62.8046875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="218.74609375" x="94.46146270177542" xml:space="preserve" y="46.59765625">S2 Pupil Names.csv
@@ -184,19 +184,20 @@ S4 Pupil Names.csv<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:Label
     <node id="n15">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.manualOperation">
-          <y:Geometry height="156.0" width="497.6474609375" x="340.63317668726404" y="1706.6462262328935"/>
+          <y:Geometry height="361.7643421398004" width="531.5074159731635" x="1690.147789003497" y="1969.6010788688463"/>
           <y:Fill color="#E8EEF7" color2="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="30" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="114.2587890625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="479.25390625" x="9.19677734375" xml:space="preserve" y="20.87060546875">Names assigned an anonymous ID 
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="30" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="151.01171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="479.25390625" x="26.12675486158173" xml:space="preserve" y="105.37631169490032">Names assigned an anonymous ID 
 by PHRF database manager
-And loaded into online survey<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+and loaded into online survey 
+before data collection<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
     <node id="n16">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.internalStorage">
-          <y:Geometry height="453.0227219447796" width="890.9543651549061" x="2168.33825975956" y="929.3859191671388"/>
+          <y:Geometry height="453.0227219447796" width="890.9543651549061" x="1578.2308703159079" y="2465.120909665482"/>
           <y:Fill color="#333300" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="30" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="77.505859375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="742.7353515625" x="74.10950679620328" xml:space="preserve" y="4.0">Q:/Project Recipient Data/Net4Health S00317/Pilot/
@@ -207,7 +208,7 @@ PersonalData/01_StudyMasterFile/Section02_RawData</y:NodeLabel>
     <node id="n17">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.internalStorage">
-          <y:Geometry height="491.3321171123097" width="1150.364537246505" x="-1136.029355835788" y="1169.878241993452"/>
+          <y:Geometry height="491.3321171123097" width="1150.364537246505" x="-386.79639829844245" y="1247.4440864677276"/>
           <y:Fill color="#333300" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="30" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="40.7529296875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="1072.9697265625" x="38.69740534200264" xml:space="preserve" y="4.0">T:\projects\Net19 S00371\Data\AnonymisedData\pilot_school_data\working data</y:NodeLabel>
@@ -217,7 +218,7 @@ PersonalData/01_StudyMasterFile/Section02_RawData</y:NodeLabel>
     <node id="n18">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.dataBase">
-          <y:Geometry height="201.71226051962435" width="567.4758068570876" x="-791.2565712317335" y="1295.5735946164182"/>
+          <y:Geometry height="201.71226051962435" width="567.4758068570876" x="-42.023613694387905" y="1373.1394390906935"/>
           <y:Fill color="#C0C0C0" color2="#008000" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="40" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="102.0078125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="462.10546875" x="105.37935111884485" xml:space="preserve" y="41.13182609665205">s2_pupil_subject_edgelist
@@ -228,17 +229,17 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
     <node id="n19">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
-          <y:Geometry height="184.13374940192693" width="546.6879445403271" x="-791.2565712317335" y="1774.0004133106413"/>
+          <y:Geometry height="184.13374940192693" width="546.6879445403271" x="-42.023613694387905" y="1851.5662577849166"/>
           <y:Fill color="#E8EEF7" color2="#99CC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="43.203125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="491.375" x="27.656472270163476" xml:space="preserve" y="70.46531220096358">3100_create_classroom_networks<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="43.203125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="514.453125" x="16.117409770163476" xml:space="preserve" y="70.46531220096358">3100 two mode classroom networks<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
     <node id="n20">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.storedData">
-          <y:Geometry height="146.39440892968832" width="734.6869634764375" x="622.4792627170925" y="840.867433878029"/>
+          <y:Geometry height="146.39440892968832" width="734.6869634764375" x="1971.9938750333256" y="1103.8222865139824"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="24" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="402.7421875" x="119.88641590821578" xml:space="preserve" y="56.49603258984416">REDACTED - Class period times.xlsx<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="-0.06272871899336624" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
@@ -248,17 +249,17 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
     <node id="n21">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.storedData">
-          <y:Geometry height="156.0" width="466.15114788131496" x="2388.284767734687" y="1015.680022366111"/>
+          <y:Geometry height="156.0" width="466.15114788131496" x="1798.177378291035" y="2551.415012864454"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="24" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="365.51171875" x="21.078650201774963" xml:space="preserve" y="61.298828125">N4H Extract 12-02-2020 1/2/3.csv<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="-0.06272871899336624" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="24" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="365.51171875" x="21.078650201775417" xml:space="preserve" y="61.298828125">N4H Extract 12-02-2020 1/2/3.csv<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="-0.06272871899336624" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
     <node id="n22">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
-          <y:Geometry height="197.92332228202395" width="432.34078478279844" x="2405.189949283945" y="1412.4086411119183"/>
+          <y:Geometry height="197.92332228202395" width="432.34078478279844" x="1815.082559840293" y="2948.1436316102613"/>
           <y:Fill color="#E8EEF7" color2="#99CC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="43.203125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="345.53125" x="43.40476739139922" xml:space="preserve" y="77.36009864101197">0600_remove_names.R<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
@@ -268,7 +269,7 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
     <node id="n23">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.internalStorage">
-          <y:Geometry height="836.1085070900971" width="2152.387670461274" x="2193.67651951912" y="1660.4896331549621"/>
+          <y:Geometry height="836.1085070900971" width="2152.387670461274" x="1603.569130075468" y="3196.224623653305"/>
           <y:Fill color="#333300" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="30" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="77.505859375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="722.7255859375" x="714.831042261887" xml:space="preserve" y="4.0">T:/projects/Net4Health S00371/Data/AnonymisedData
@@ -279,7 +280,7 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
     <node id="n24">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.storedData">
-          <y:Geometry height="156.0" width="681.6369020255561" x="2285.666121204015" y="1806.476571644726"/>
+          <y:Geometry height="156.0" width="681.6369020255561" x="1695.5587317603627" y="3342.211562143069"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="24" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="518.91015625" x="38.605163205108056" xml:space="preserve" y="61.298828125">N4H Extract 12-02-2020 1/2/3. - Anonymisedcsv<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="-0.06272871899336624" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
@@ -289,7 +290,7 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
     <node id="n25">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
-          <y:Geometry height="101.5" width="432.34078478279844" x="3053.699962358358" y="1833.726571644726"/>
+          <y:Geometry height="101.5" width="432.34078478279844" x="2463.5925729147057" y="3369.461562143069"/>
           <y:Fill color="#E8EEF7" color2="#99CC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="43.203125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="390.046875" x="21.14695489139922" xml:space="preserve" y="29.1484375">0601_remove_open_text.R<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
@@ -299,7 +300,7 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
     <node id="n26">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.storedData">
-          <y:Geometry height="156.0" width="681.6369020255561" x="3597.5354114802976" y="1806.476571644726"/>
+          <y:Geometry height="156.0" width="681.6369020255561" x="3007.4280220366454" y="3342.211562143069"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="24" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="438.8828125" x="78.61883508010806" xml:space="preserve" y="61.298828125">N4H anonymised extract 12-02-2020.csv<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="-0.06272871899336624" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
@@ -309,20 +310,20 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
     <node id="n27">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.dataBase">
-          <y:Geometry height="177.09299126590645" width="1077.4130816114898" x="3268.6511083689043" y="3057.9361536129486"/>
+          <y:Geometry height="156.00000000000023" width="1044.4213305510998" x="2299.957758158398" y="4507.9434536088775"/>
           <y:Fill color="#C0C0C0" color2="#008000" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="47" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="61.57958984375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="1013.4443359375" x="132.0298732723477" xml:space="preserve" y="64.08965159205127">"Net4Health Diet variables extract 16072020.csv<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.09285714285714286" nodeRatioY="0.20962289663461542" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="47" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="61.57958984375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="1013.4443359375" x="15.4884973067999" xml:space="preserve" y="47.210205078125">"Net4Health Diet variables extract 16072020.csv</y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
     <edge id="e0" source="n9" target="n10">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="54.5" tx="-76.46388888888896" ty="-103.14461977784322"/>
+          <y:Path sx="0.0" sy="54.5" tx="0.0" ty="-61.29476927945325"/>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-32.00005562486626" y="53.07522601574601">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-31.999978392535922" y="72.49863241140156">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -341,7 +342,7 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-31.999994052342117" y="42.271287094729814">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-32.00003017360905" y="42.27130574630792">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -360,7 +361,7 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-189.44024462003904" y="-31.999951676630417">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-189.4402807413062" y="-32.00005509536459">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -379,7 +380,7 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-32.00000202367346" y="112.05018805938153">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-28.054262125740024" y="111.99686198439713">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -398,7 +399,7 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="129.68122765417502" y="129.1164514284519">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="129.6811915329081" y="129.11634800971706">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -417,7 +418,7 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="129.68122765417502" y="129.1164514284519">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="129.6811915329081" y="129.11634800971706">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -436,7 +437,7 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="129.68122765417502" y="129.1164514284519">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="129.6811915329081" y="129.11634800971706">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -455,7 +456,7 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="129.68122765417502" y="129.1164514284519">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="129.6811915329081" y="129.11634800971706">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -472,11 +473,11 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="601.9783565671563" y="1211.0407167145527"/>
+            <y:Point x="1951.4929688833895" y="1473.9955693505058"/>
           </y:Path>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-299.8520636143493" y="-100.93541904015365">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-299.8519776653038" y="-100.93540038857554">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -495,7 +496,7 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-35.29243931131077" y="146.4332953561543">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-35.29243770658243" y="146.4332218616796">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -509,13 +510,12 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
       </data>
     </edge>
     <edge id="e10" source="n21" target="n22">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-32.0000098871551" y="118.37880439526452">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-31.99997745580754" y="118.37868747173252">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -529,13 +529,12 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
       </data>
     </edge>
     <edge id="e11" source="n22" target="n24">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-30.655911252521037" y="96.0643016990216">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-30.65600089148552" y="96.0643068458021">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -549,13 +548,12 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
       </data>
     </edge>
     <edge id="e12" source="n25" target="n26">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#FF00FF" type="line" width="4.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="53.71337227947697" y="28.000009144725936">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="53.71316057019976" y="27.99989222119393">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -569,7 +567,6 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
       </data>
     </edge>
     <edge id="e13" source="n7" target="n27">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -580,7 +577,6 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
       </data>
     </edge>
     <edge id="e14" source="n24" target="n9">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-340.8403383313844" sy="0.0" tx="0.0" ty="0.0"/>
@@ -591,7 +587,6 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
       </data>
     </edge>
     <edge id="e15" source="n24" target="n7">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -602,7 +597,6 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
       </data>
     </edge>
     <edge id="e16" source="n25" target="n23">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -613,7 +607,6 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
       </data>
     </edge>
     <edge id="e17" source="n24" target="n25">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -624,7 +617,6 @@ s4_pupil_subject_edgelist<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></
       </data>
     </edge>
     <edge id="e18" source="n24" target="n8">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>

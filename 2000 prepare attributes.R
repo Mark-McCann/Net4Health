@@ -59,9 +59,9 @@ test.dfCheck <- apply(test.df, 2, function(x) ifelse(x == " " | x == "" | x == 0
 
 summary(test.dfCheck)
 
-mdf <- missing_data.frame(test.dfCheck)
-#windows()
-#image(mdf)
+#    mdf <- missing_data.frame(test.dfCheck)
+#    windows()
+#    image(mdf)
 
 missing <- list()
 

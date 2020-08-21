@@ -16,7 +16,7 @@ rm(list=ls())
 # Quick overview of emotional interaction networks 
 # For the West partnership Principal Education Psychologists meeting
 
-
+# Also the plots used for the Net4Health Sunbelt presentation
 
 
 
@@ -48,22 +48,6 @@ library(lme4)
 #########################
 
 
-#########################################################################
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
-#    +    +    +       Net4Health Dummy data   +    +    +    +    +    +
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
-#########################################################################
-
-
-# Mark: setwd("T:/projects/Net19 S00371/Data/AnonymisedData/dummy_data")
-
-#T:\projects\Net4Health S00371\Data\AnonymisedData\dummy_data\Test Extract 05012020.csv
-# Claudia
-# setwd("N:/")
-
-# test.df <- read.csv("Net4Health Test Extract 20012020.csv", stringsAsFactors = FALSE)
-
-#setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/dummy_data")
 
 
 ###Unit drive

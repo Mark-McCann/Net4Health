@@ -2,7 +2,7 @@ rm(list = ls())
 
 #################
 #               #
-#      Name     #
+#      Notes    #
 #               #
 #################
 
@@ -12,7 +12,8 @@ rm(list = ls())
 
 # The edge attributes haven't been added. 
 
-#   Still contains a lot of visualisations that should live somewhere else 
+
+# ***  Still contains a lot of visualisations that should live in a separate script 
 
 #############
 #  Purpose  #
@@ -794,6 +795,23 @@ plot(other.gang.net,  vertex.label = "",vertex.size=3,
 ###    ****Still to be added  
 
 ####Add in edge attributes  - Not in this school year, Gender , older younger
+
+YearFour$q_net_friend_1_how_close
+YearFour$q_net_friend_10_how_long
+YearFour$q_net_friend_1_hang_out
+YearFour$q_net_friend_1_weekend
+YearFour$q_net_friend_1_internet
+YearFour$q_net_friend_1_social_media
+YearFour$q_net_friend_1_listen_music
+YearFour$q_net_friend_1_school
+YearFour$q_net_friend_1_internet
+YearFour$q_net_friend_1_play_board_games
+YearFour$q_net_friend_1_same_clubs_yes_no
+YearFour$q_net_friend_1_same_clubs_activity_1
+YearFour$q_net_friend_1_same_clubs_activity_2
+YearFour$q_net_friend_1_same_clubs_activity_3
+
+
 
 #q_net_friend_10_school_year_1
 #q_net_friend_10_gender_1

@@ -1,16 +1,8 @@
-#################
-#               #
-#      Name     #
-#               #
-#################
-
-# Mark McCann created the file
-
 #############
 #  Purpose  #
 #############
 
-# Creates separate hpc files
+# Read in one analysis file and convert it to many parallel files for HPC
 
 ##############
 #            #
@@ -18,6 +10,11 @@
 #            #
 ##############
 
+#########################
+#                       #
+#  Outstanding actions  #
+#                       #
+#########################
 
 #########################
 #                       #
@@ -25,10 +22,19 @@
 #                       #
 #########################
 
-##Add in the hpc requires
-####This was run off-campus
-setwd("C:/A Work/A London/hpc")
 
+#########################
+#                       #
+#     Load functions    #
+#                       #
+#########################
+
+
+#########################
+#                       #
+#  Main body of script  #
+#                       #
+#########################
 
 
 #######HPC R files

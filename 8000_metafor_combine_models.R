@@ -67,27 +67,14 @@ forestplot <- function(data = NULL,
   #Run meta analysis
   metareg <- rma(yi=coef.table[,1],
                  sei=coef.table[,2],
-                 #                 slab=c("Net1", "Net2", "Net3", "Net4", "Net5", "Net6"
-                 #                        , "Net7", "Net8","Net9","Net10","Net11","Net12") 
-                 # slab=c("Sch 1 base", "Sch 2 base", "Sch 3 base", "Sch 4 base", "Sch 5 base", "Sch 6 base"
-                 #        , "Sch 1 ctrl", "Sch 2 ctrl","Sch 3 ctrl","Sch 4 ctrl","Sch 5 ctrl","Sch 6 ctrl") 
-                 slab=c("Sch 1 baseline", "Sch 2 baseline", "Sch 3 baseline", "Sch 5 baseline", "Sch 6 baseline"
-                        , "Sch 1 control", "Sch 2 control","Sch 3 control","Sch 5 control","Sch 6 control") 
-                 , method = "REML", level = conf)
-  
-  metareg.wave <- rma(yi=coef.table[,1],
-                      sei=coef.table[,2], 
-                      slab=c("Sch 1 baseline", "Sch 2 baseline", "Sch 3 baseline", "Sch 5 baseline", "Sch 6 baseline"
-                             , "Sch 1 control", "Sch 2 control","Sch 3 control","Sch 5 control","Sch 6 control") 
-                      , method = "REML" 
-                      , mods = coef.table[,3])
+               , method = "REML", level = conf)
   
   print(metareg.wave)
   
   #Plot results
-  setwd("\\\\192.168.0.17/stash_sna/DisseminationAndImpact/Manuscripts_Papers/Control Schools Paper")
+  setwd()
   
-  pdf(paste0(variable," forest 12 networks.pdf"))
+  pdf(paste0(variable," forest.pdf"))
   
   forest(metareg, 
          main = paste0("Tie probability by difference in ",variable),
@@ -107,62 +94,6 @@ forestplot <- function(data = NULL,
 #                       #
 #########################
 
-##################################################
-
-#                     6500 Models                #
-
-
-#load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/baseline_pooled_sch1.rdata")
-#load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/baseline_pooled_sch2.rdata")
-#load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/baseline_pooled_sch3.rdata")
-#load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/baseline_pooled_sch4.rdata")
-#load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/baseline_pooled_sch5.rdata")
-#load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/baseline_pooled_sch6.rdata")
-
-#load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/control_pooled_sch1.rdata")
-#load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/control_pooled_sch2.rdata")
-#load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/control_pooled_sch3.rdata")
-#load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/control_pooled_sch4.rdata")
-#load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/control_pooled_sch5.rdata")
-#load("//192.168.0.17/stash_sna/Data/AnonymisedData/working data/control_pooled_sch6.rdata")
-
-
-indata <- list() 
-
-setwd("//192.168.0.17/stash_sna/Data/AnonymisedData/working data")
-filename <- list.files(pattern = "6100_sch*")
-
-for (sch in 1:12) {
-  load(filename[sch])
-}
-
-indata <- list()
-indata[[1]] <- baseline.pooled.6100.sch1[[3]]
-indata[[2]] <- baseline.pooled.6100.sch2[[3]]
-indata[[3]] <- baseline.pooled.6100.sch3[[3]]
-
-
-#####Omit School 4
-#indata[[4]] <- baseline.pooled.6100.sch4[[3]]
-#######Sex2 coef not defined. Fix to zero for purpose of plot
-#indata[[4]]$pool.est[7] <- 0.00000000001
-#indata[[4]]$pool.se[7]  <-  0.9
-####Also se of ifactor for sexvar
-#indata[[4]]$pool.se[12] <- 0.9
-
-indata[[4]] <- baseline.pooled.6100.sch5[[3]]
-indata[[5]] <- baseline.pooled.6100.sch6[[3]]
-
-indata[[6]]  <- control.pooled.6100.sch1[[3]]
-indata[[7]]  <- control.pooled.6100.sch2[[3]]
-indata[[8]]  <- control.pooled.6100.sch3[[3]]
-####Omit school 4
-#indata[[10]] <- control.pooled.6100.sch4[[3]]
-
-
-indata[[9]] <- control.pooled.6100.sch5[[3]]
-indata[[10]] <- control.pooled.6100.sch6[[3]]
-
 
 ##############
 ### To use forestplot
@@ -175,54 +106,6 @@ indata[[10]] <- control.pooled.6100.sch6[[3]]
 know.meta <- forestplot(data =  indata ,variable = "6100 knowledge"  , varname = "absdiff.know.var", conf = 95)
 att.meta  <- forestplot(data =  indata ,variable = "6100 attitudes"  , varname = "absdiff.att.var", conf = 95)
 conf.meta <- forestplot(data =  indata ,variable = "6100 confidence"  , varname = "absdiff.conf.var", conf = 95)
-
-sex1match.meta <- forestplot(data =  indata ,variable = "6100 matchsex1"  , varname = "nodematch.sex.var.1")
-sex2match.meta <- forestplot(data =  indata ,variable = "6100 matchsex2"  , varname = "nodematch.sex.var.2")
-sex3match.meta <- forestplot(data =  indata ,variable = "6100 matchsex3"  , varname = "nodematch.sex.var.3")
-
-edges.meta <- forestplot(data =  indata ,variable = "6100 edges"  , varname = "edges")
-mutual.meta <- forestplot(data =  indata ,variable = "6100 mutual"  , varname = "mutual")
-gwesp.meta <- forestplot(data =  indata ,variable = "6100 gwesp"  , varname = "gwesp.fixed.0.25")
-ideg.meta <- forestplot(data =  indata ,variable = "6100 idegree"  , varname = "idegree1.5")
-
-gendermatch.meta <- forestplot(data =  indata ,variable = "6100 gender match"  , varname = "nodematch.gender")
-
-sex2ifac.meta <- forestplot(data =  indata ,variable = "6100 ifactor sex2"  , varname = "nodeifactor.sex.var.2")
-sex3ifac.meta <- forestplot(data =  indata ,variable = "6100 ifactor sex3"  , varname = "nodeifactor.sex.var.3")
-sex2ofac.meta <- forestplot(data =  indata ,variable = "6100 ofactor sex2", varname = "nodeofactor.sex.var.2")
-sex3ofac.meta <- forestplot(data =  indata ,variable = "6100 ofactor sex3"  , varname = "nodeofactor.sex.var.3")
-knowicov.meta <- forestplot(data =  indata ,variable = "6100 indeg Knowledge", varname = "nodeicov.know.var")
-knowocov.meta <- forestplot(data =  indata ,variable = "6100 outdeg Knowledge", varname = "nodeocov.know.var")
-
-atticov.meta <- forestplot(data =  indata ,variable = "6100 indeg Attitude", varname = "nodeicov.att.var")
-attocov.meta <- forestplot(data =  indata ,variable = "6100 outdeg Attitude", varname = "nodeocov.att.var")
-
-conficov.meta <- forestplot(data =  indata ,variable = "6100 indeg Confidence", varname = "nodeicov.conf.var")
-confocov.meta <- forestplot(data =  indata ,variable = "6100 outdeg Confidence", varname = "nodeocov.conf.var")
-
-
-
-varnamecol <- c("edges",
-                "mutual",
-                "Gwesp",
-                "Indegree Sqrt",
-                "Gender match",
-                "Not sexually active",
-                "Active no intercourse",
-                "Intercourse",
-                "Knowledge difference",
-                "Attitudes difference",
-                "Confidence difference",
-                "in Active no intercourse",
-                "in Intercourse",
-                "in Knowledge",
-                "in Attitudes",
-                "in Confidence",
-                "out Active no intercourse",
-                "out Intercourse",
-                "out Knowledge",
-                "out Attitudes",
-                "out  Confidence")
 
 
 #####layout of meta analysis summary table
