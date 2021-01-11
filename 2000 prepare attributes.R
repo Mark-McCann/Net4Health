@@ -605,8 +605,6 @@ LonUCLAY2 <- subset(YearTwo, select = c(q_45_a, q_45_b, q_45_c))
 #mdf <- missing_data.frame(LonUCLAY2)
 #image(mdf)
 
-
-
 LonUCLAY2rec <- as.data.frame(apply(LonUCLAY2, 2, function(x) ifelse(x == 1, 0, 
                                                                      ifelse(x == 2, 1,
                                                                             ifelse(x == 3, 2, x)))))
@@ -635,7 +633,6 @@ StiAwY2 <- subset(YearTwo, select = c(q_51b_b, q_51b_d, q_51b_e, q_51b_h ))
 
 #mdf <- missing_data.frame(StiAwY2)
 #image(mdf)
-
 
 StiAwY2 <- as.data.frame(apply(StiAwY2, 2, function(x) ifelse(x == 1, 0, 
                                                               ifelse(x == 2, 1,

@@ -56,8 +56,6 @@ class(friend.10names)
 
 set.vertex.attribute(friend.10names, 'StiAgre' , recoded.Y4$StiAgrY4Scale)
 set.vertex.attribute(friend.10names, 'boy' , recoded.Y4$boy)
-
-
 set.vertex.attribute(friend.10names, 'FindOut' , YearFour$q_37_e)
 set.vertex.attribute(friend.10names, 'Compete' , YearFour$q_37_g)
 set.vertex.attribute(friend.10names, 'ghq'     , YearFour$GHQY4CaseScale)
