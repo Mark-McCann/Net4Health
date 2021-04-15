@@ -64,12 +64,6 @@ load("T:/projects/Net19 S00371/Data/AnonymisedData/pilot_school_data/working dat
 load("//130.209.141.254/projects/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data/TEMP_NO_PUPILID_s2_pupil_subject_edgelist.rdata")
 load("//130.209.141.254/projects/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data/TEMP_NO_PUPILID_s4_pupil_subject_edgelist.rdata")
 
-setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
-
-
-load("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data/TEMP_NO_PUPILID_s2_pupil_subject_edgelist.rdata")
-load("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data/TEMP_NO_PUPILID_s4_pupil_subject_edgelist.rdata")
-
 
 ##shorten filename to make it easier to code up
 s2raw <- s2.pupil.subject.edgelist
@@ -166,9 +160,7 @@ V(pupil.1mode)$label <- ""
 
 E(pupil.1mode)$arrow.width <- 0.1
 
-setwd("T:/projects/Net4Health S00371/Doodles")
-
-pdf("3100 s2 pupil 1 mode shared classes network.pdf")
+pdf("s2 pupil 1 mode shared classes network.pdf")
 plot(pupil.1mode,main = 'Pupil shared classes network', arrow.width = 0.01)
 dev.off()
 
@@ -208,24 +200,24 @@ V(class.1mode)$label.color <- rgb(0,1,.2,.9)
 #V(class.1mode)$label <- ""
 
 
-pdf("3100 s2 class 1 mode shared pupils network.pdf")
+pdf("s2 class 1 mode shared pupils network.pdf")
 plot(class.1mode,main = 'Class shared pupil network')
 dev.off()
 
-pdf("3100 s2 class 1 mode shared pupils network kklayout.pdf")
+pdf("s2 class 1 mode shared pupils network kklayout.pdf")
 plot(class.1mode,main = 'Class shared pupil network', layout = layout.kamada.kawai)
 dev.off()
 
 
-pdf("3100 s2 class 1 mode shared pupils network drl layout.pdf")
+pdf("s2 class 1 mode shared pupils network drl layout.pdf")
 plot(class.1mode,main = 'Class shared pupil network', layout = layout.drl)
 dev.off()
 
-pdf("3100 s2 class 1 mode shared pupils network gem layout.pdf")
+pdf("s2 class 1 mode shared pupils network gem layout.pdf")
 plot(class.1mode,main = 'Class shared pupil network', layout = layout.gem)
 dev.off()
 
-pdf("3100 s2 class 1 mode shared pupils network circle layout.pdf")
+pdf("s2 class 1 mode shared pupils network circle layout.pdf")
 plot(class.1mode,main = 'Class shared pupil network', layout = layout.circle)
 dev.off()
 
