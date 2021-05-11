@@ -8,6 +8,18 @@ rm(list = ls())
 
 # Mark McCann developed this script
 
+###NOTE!!!!!!
+
+# This data is out of date. The new data after manual checking of name generators is
+# Final changes without Names N4H extract.xlsx
+
+#This file had names manually removed and the file appears in the locations below
+
+
+#Q:/Project Recipient Data/Net4Health S00317/Pilot/PersonalData/01_StudyMasterFile/Section02_RawData
+#T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data
+
+
 
 #############
 #  Purpose  #
@@ -135,3 +147,8 @@ setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/worki
 write.csv(file1, "N4H extract 12-02-2020 1 - Anonymised.csv")
 write.csv(file2, "N4H extract 12-02-2020 2 - Anonymised.csv")
 write.csv(file3, "N4H extract 12-02-2020 3 - Anonymised.csv")
+
+
+
+
+
