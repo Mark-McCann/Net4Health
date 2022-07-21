@@ -152,3 +152,64 @@ tail(formdf)
 write.csv(formdf,  "Question labels for multiforms.csv")
 
 
+
+######Create list of excluded questions per form
+
+#Create forms
+
+#1	X	A	B				
+notFormA <- c(SetC,SetD, SetE, SetF)
+
+#2	X	A		C			
+notFormB <- c(SetB, SetD, SetE, SetF)
+
+#3	X	A			D		
+notFormC <- c(SetB,SetC, SetE, SetF)
+#4	X	A				E	
+notFormD <- c(SetB,SetC, SetD, SetF)
+#5	X	A					F
+notFormE <- c(SetB, SetC,SetD, SetE)
+#6	X		B	C			
+notFormF <- c(SetA, SetD,SetE, SetF)
+#7	X		B		D		
+notFormG <- c(SetA, SetC,SetE, SetF)
+#8	X		B			E	
+notFormH <- c(SetA, SetC,SetD, SetF)
+#9	X		B				F
+notFormI <- c(SetA, SetC,SetD, SetE)
+#10	X			C	D		
+notFormJ <- c(SetA, SetB,SetE, SetF)
+#11	X			C		E	
+notFormK <- c(SetA, SetB,SetD, SetF)
+#12	X			C			F
+notFormL <- c(SetA, SetB,SetD, SetE)
+#13	X				D	E	
+notFormM <- c(SetA, SetB,SetC, SetF)
+#14	X				D		F
+notFormN <- c(SetA, SetB,SetC, SetE)
+#15	X					E	F
+notFormO <- c(SetA, SetB,SetC, SetD)
+
+
+notformdf <- data.frame(Form0)
+#Add NAs for the trailing end of the shorter Forms
+
+notformdf$FormA <- c(notFormA, rep(NA, length(Form0) - length(notFormA)))
+notformdf$FormB <- c(notFormB, rep(NA, length(Form0) - length(notFormB)))
+notformdf$FormC <- c(notFormC, rep(NA, length(Form0) - length(notFormC)))
+notformdf$FormD <- c(notFormD, rep(NA, length(Form0) - length(notFormD)))
+notformdf$FormE <- c(notFormE, rep(NA, length(Form0) - length(notFormE)))
+notformdf$FormF <- c(notFormF, rep(NA, length(Form0) - length(notFormF)))
+notformdf$FormG <- c(notFormG, rep(NA, length(Form0) - length(notFormG)))
+notformdf$FormH <- c(notFormH, rep(NA, length(Form0) - length(notFormH)))
+notformdf$FormI <- c(notFormI, rep(NA, length(Form0) - length(notFormI)))
+notformdf$FormJ <- c(notFormJ, rep(NA, length(Form0) - length(notFormJ)))
+notformdf$FormK <- c(notFormK, rep(NA, length(Form0) - length(notFormK)))
+notformdf$FormL <- c(notFormL, rep(NA, length(Form0) - length(notFormL)))
+notformdf$FormM <- c(notFormM, rep(NA, length(Form0) - length(notFormM)))
+notformdf$FormN <- c(notFormN, rep(NA, length(Form0) - length(notFormN)))
+notformdf$FormO <- c(notFormO, rep(NA, length(Form0) - length(notFormO)))
+
+notformdf$Form0 <- NULL
+
+write.csv(notformdf,  "Excluded variables for multiforms.csv")
