@@ -71,7 +71,7 @@ return(net)
 #                       #
 #########################
 
-#setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
+setwd("T:/projects/Net4Health S00371/Data/AnonymisedData/pilot_school_data/working data")
 #setwd("/home/claudia/Desktop/Net4healthTaken")
 
 setwd("C:/Users/mmc78h/Documents/A Work/Net4Health/Data")
